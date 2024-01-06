@@ -1,0 +1,3 @@
+[submodule "src/contracts/graphql"]
+	path = src/contracts/graphql
+	url = git@github.com:veekhere/gp-schema.git
