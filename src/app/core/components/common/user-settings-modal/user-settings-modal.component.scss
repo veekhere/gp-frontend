@@ -1,0 +1,26 @@
+.user-modal {
+  &__header {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__content {
+    padding: 48px 0;
+
+    .content-item {
+      display: flex;
+
+      & > div {
+        .item-title {
+          font-weight: 600;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

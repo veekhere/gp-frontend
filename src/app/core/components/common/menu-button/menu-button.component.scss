@@ -1,0 +1,82 @@
+:host {
+  height: 32px;
+}
+
+.menu-button {
+  position: relative;
+  height: 32px;
+  width: 32px;
+
+  span {
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 32px;
+    background-color: var(--text-default-inactive);
+    border-radius: 10px;
+
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    span {
+      background-color: var(--text-default-hover);
+    }
+  }
+}
+
+.active {
+  &:hover {
+    span {
+      background-color: var(--text-default);
+    }
+  }
+
+  span {
+    background-color: var(--text-default);
+  }
+}
+
+.closed {
+  span {
+    &:nth-child(1) {
+      top: 2px;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 15px;
+    }
+    &:nth-child(4) {
+      top: 28px;
+    }
+  }
+}
+
+.opened {
+  span {
+    &:nth-child(1) {
+      top: 2px;
+      opacity: 0;
+    }
+
+    &:nth-child(2) {
+      top: 15px;
+      transform: rotateZ(45deg);
+    }
+    &:nth-child(3) {
+      top: 15px;
+      transform: rotateZ(-45deg);
+    }
+
+    &:nth-child(4) {
+      top: 28px;
+      opacity: 0;
+    }
+  }
+}

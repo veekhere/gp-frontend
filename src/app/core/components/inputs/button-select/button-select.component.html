@@ -1,0 +1,50 @@
+<tui-hosted-dropdown
+  [content]="dropdown"
+  [open]="isOpen$ | async"
+  (openChange)="isOpen$.next($event)"
+>
+  <ng-template
+    *ngIf="useTemplate"
+    [ngTemplateOutlet]="templateRef"
+    [ngTemplateOutletContext]="{ $implicit: (isOpen$ | async) }"
+  ></ng-template>
+
+  <ng-container *ngIf="!useTemplate">
+    <button
+      tuiButton
+      type="button"
+      appearance="flat"
+      size="m"
+      [iconRight]="arrow"
+      [pseudoHover]="(isOpen$ | async) || null"
+    >
+      {{ label | translate }}
+    </button>
+  </ng-container>
+</tui-hosted-dropdown>
+
+<ng-template #dropdown>
+  <tui-data-list role="menu">
+    <ng-container *ngFor="let group of options">
+      <tui-opt-group [label]="group?.name | translate">
+        <ng-container *ngFor="let item of group?.items">
+          <app-notification-badge [showBadge]="item?.hasNotification$ | async">
+            <button
+              tuiOption
+              class="w-full"
+              [disabled]="item?.disabled"
+              (click)="onSelect(item)"
+            >
+              {{ item?.name | translate }}
+              <tui-svg
+                *ngIf="item?.icon as icon"
+                class="ml-2"
+                [src]="icon"
+              ></tui-svg>
+            </button>
+          </app-notification-badge>
+        </ng-container>
+      </tui-opt-group>
+    </ng-container>
+  </tui-data-list>
+</ng-template>

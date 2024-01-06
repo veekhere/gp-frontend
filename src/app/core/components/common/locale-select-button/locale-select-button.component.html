@@ -1,0 +1,11 @@
+<app-button-select
+  [useTemplate]="true"
+  [options]="data$ | async"
+  (itemSelected)="onSelect($event)"
+>
+  <ng-template let-isOpen>
+    <button class="language-button">
+      <span class="flag fi {{ 'fi-' + (language$ | async) }}"></span>
+    </button>
+  </ng-template>
+</app-button-select>

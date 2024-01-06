@@ -1,0 +1,74 @@
+{
+  "APPLICATION_LANGUAGE": "Application language",
+  "LANGUAGE": {
+    "EN": "English",
+    "RU": "Русский"
+  },
+  "ENUM": {},
+  "NOTIFICATION": {
+    "NOT_AUTHORIZED": "This area is only available for signed users",
+    "EMAIL_IS_NOT_VERIFIED": "You should verify your e-mail before you can do this",
+    "EMAIL_VERIFICATION_SUCCESS": "Your e-mail is verified",
+    "PASSWORD_RESET_SEND": "Password reset email sent, please check your inbox"
+  },
+  "AUTH": {
+    "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
+    "BACK_TO_AUTHENTICATION": "Back to authentication",
+    "CONFIRM_EMAIL_TEXT": "We sent a confirmation letter on your e-mail",
+    "CONFIRM_EMAIL_TITLE": "Almost done. Just confirm your e-mail",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "FORGOT_PASSWORD_ACTION": "Reset password",
+    "FORGOT_PASSWORD_TITLE": "Forgot password",
+    "GOOGLE_AUTH": "Google",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "NO_ACCOUNT": "Do not have an account?",
+    "SIGN_UP": "Sign Up",
+    "VERIFY_EMAIL_TEXT": "We send you an e-mail with verification link",
+    "VERIFY_EMAIL_TITLE": "Almost done. Just verify your email"
+  },
+  "USER": {
+    "EMAIL": "E-mail",
+    "NICKNAME": "Nickname",
+    "EMAIL_VERIFIED": "Verified",
+    "EMAIL_NOT_VERIFIED": "Not verified"
+  },
+  "ACTION": {
+    "RESET_PASSWORD": "Reset password",
+    "RESEND_EMAIL": "Resend email verification",
+    "RESEND_EMAIL_COOLDOWN_START": "Send again in ",
+    "RESEND_EMAIL_COOLDOWN_END": " second(s)",
+    "LANGUAGE": "Language",
+    "UPLOAD": "Upload",
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "WILDCARD_BACK": "I want to be at home!"
+  },
+  "NAVIGATION": {
+    "NAVIGATION": "Navigation",
+    "HOME": "Home",
+    "DASHBOARD": "Dashboard",
+    "ABOUT": "About",
+    "WILDCARD": "I think this is not the Platform 9¾...",
+    "USER": {
+      "ACTIONS": {
+        "SETTINGS": "Settings",
+        "LOGOUT": "Logout",
+        "LOGIN": "Login",
+        "SIGN_UP": "Sign Up",
+        "GROUPS": {
+          "AUTHENTICATION": "Authentication"
+        }
+      }
+    }
+  },
+  "TEXT": {
+    "ABOUT": "Fintracker is a project created to track your cash flow. Record your expenses and analyze the provided statistics. Divide expenses into categories and filter the displayed list in a way that suits you.",
+    "ABOUT_WARNING": "Attention! The project was created for educational purposes only. Using the provided services, you confirm that Fintracker is not responsible for the safety of the data you entered, and you are aware of the possibility of leakage or damage to this data."
+  },
+  "INPUTS": {
+    "EMAIL": "E-mail",
+    "PASSWORD": "Password"
+  }
+}

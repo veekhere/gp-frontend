@@ -1,0 +1,66 @@
+<ng-container *ngIf="!!title; else input">
+  <label [tuiLabel]="label">
+    <ng-container *ngTemplateOutlet="input"></ng-container>
+  </label>
+</ng-container>
+
+<ng-template #input>
+  <tui-combo-box
+    [stringify]="stringify"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
+    [tuiTextfieldCleaner]="cleaner"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+    [tuiTextfieldLabelOutside]="!!title"
+    (searchChange)="searchString$.next($event)"
+  >
+    <input
+      class="no-title"
+      [id]="uuid"
+      [placeholder]="placeholder"
+      tuiTextfield
+    />
+    <tui-data-list-wrapper
+      *tuiDataList
+      [itemContent]="stringify | tuiStringifyContent"
+      [items]="items$ | async"
+    >
+    </tui-data-list-wrapper>
+  </tui-combo-box>
+
+  <!-- TODO to input error component -->
+  <div
+    *ngIf="control?.touched && control?.invalid"
+    class="error__container tui-space_top-2"
+  >
+    <tui-svg
+      src="tuiIconInfo"
+      class="error tui-space_right-1"
+    ></tui-svg>
+    {{ control?.errors?.['houseIsNotSelected']?.message }}
+  </div>
+</ng-template>
+
+<ng-template #success>
+  <tui-svg
+    src="tuiIconCheckLarge"
+    class="success tui-space_left-3"
+  ></tui-svg>
+</ng-template>
+
+<ng-template #label>
+  <div class="tui-space_bottom-2">
+    {{ title }}
+    <tui-tooltip
+      *ngIf="!!tooltip"
+      [describeId]="uuid"
+      [content]="tooltip"
+      direction="top-right"
+    ></tui-tooltip>
+  </div>
+</ng-template>

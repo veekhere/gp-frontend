@@ -1,0 +1,6 @@
+<tui-rating
+  [formControl]="control"
+  [readOnly]="readonly"
+  [disabled]="control?.disabled"
+></tui-rating>
+<span *ngIf="readonly">{{ control?.value }}</span>

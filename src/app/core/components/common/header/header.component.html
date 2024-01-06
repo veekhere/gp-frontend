@@ -1,0 +1,36 @@
+<header>
+  <app-menu-button
+    class="menu-button"
+    [items]="navigationService.menuOptions"
+  ></app-menu-button>
+
+  <a
+    [routerLink]="[paths.EMPTY]"
+    class="logo"
+  >
+    <span>RENT</span>RATE
+  </a>
+
+  <nav class="navigation">
+    <ng-container *ngFor="let item of navigationService.menu">
+      <app-notification-badge
+        [showBadge]="item?.hasNotification$ | async"
+        [badgeBorderColor]="'var(--bg-default)'"
+        [rounded]="false"
+      >
+        <a
+          [routerLink]="item?.link"
+          routerLinkActive="active"
+          class="header__navigation-item"
+        >
+          {{ item?.title | translate }}
+        </a>
+      </app-notification-badge>
+    </ng-container>
+  </nav>
+
+  <div class="user-menu">
+    <app-locale-select-button class="user-menu__locale"></app-locale-select-button>
+    <app-user-button class="user-menu__user-button"></app-user-button>
+  </div>
+</header>

@@ -1,0 +1,60 @@
+{
+  "APPLICATION_LANGUAGE": "Язык приложения",
+  "LANGUAGE": {
+    "EN": "English",
+    "RU": "Русский"
+  },
+  "ENUM": {},
+  "NOTIFICATION": {
+    "NOT_AUTHORIZED": "Эта страница доступна только авторизованным пользователям",
+    "EMAIL_IS_NOT_CONFIRMED": "Вы не подтвердили свой e-mail"
+  },
+  "AUTH": {
+    "ALREADY_HAVE_AN_ACCOUNT": "Уже есть аккаунт?",
+    "BACK_TO_AUTHENTICATION": "Back to authentication",
+    "CONFIRM_EMAIL_TEXT": "Мы отправили письмо с подтверждением на ваш e-mail",
+    "CONFIRM_EMAIL_TITLE": "Почти всё. Осталось только подтвердить e-mail",
+    "FORGOT_PASSWORD": "Забыли пароль?",
+    "FORGOT_PASSWORD_ACTION": "Reset password",
+    "FORGOT_PASSWORD_TITLE": "Forgot password",
+    "GOOGLE_AUTH": "Google",
+    "LOGIN": "Войти",
+    "LOGOUT": "Выйти",
+    "NO_ACCOUNT": "Еще нет аккаунта?",
+    "SIGN_UP": "Создать аккаунт",
+    "VERIFY_EMAIL_TEXT": "We send you an e-mail with verification link",
+    "VERIFY_EMAIL_TITLE": "Almost done. Just verify your email"
+  },
+  "USER": {
+    "EMAIL": "E-mail",
+    "NICKNAME": "Никнейм",
+    "EMAIL_VERIFIED": "Подтвержден",
+    "EMAIL_NOT_VERIFIED": "Не подтвержден"
+  },
+  "NAVIGATION": {
+    "NAVIGATION": "Навигация",
+    "HOME": "Главная",
+    "DASHBOARD": "Дашборд",
+    "ABOUT": "О приложении",
+    "WILDCARD": "I think this is not the Platform 9¾...",
+    "USER": {
+      "ACTIONS": {
+        "SETTINGS": "Настройки",
+        "LOGOUT": "Выйти",
+        "LOGIN": "Войти",
+        "SIGN_UP": "Создать аккаунт",
+        "GROUPS": {
+          "AUTHENTICATION": "Авторизация"
+        }
+      }
+    }
+  },
+  "TEXT": {
+    "ABOUT": "Fintracker — это проект, созданный для отслеживания Вашего денежного потока. Записывайте свои расходы и анализируйте предоставленную статистику. Разделяйте расходы по категориям и фильтруйте отображаемый список удобным Вам образом.",
+    "ABOUT_WARNING": "Внимание! Проект создан исключительно в образовательных целях. Пользуясь предоставленными услугами Вы подтверждаете, что Fintracker не несет ответственности за сохранность внесенных Вами данных, и осознаете возможность утечки или порчи этих данных."
+  },
+  "INPUTS": {
+    "EMAIL": "E-mail",
+    "PASSWORD": "Пароль"
+  }
+}

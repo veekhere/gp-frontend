@@ -1,0 +1,21 @@
+:host {
+  .no-title {
+    padding-top: 0 !important;
+  }
+}
+
+.success {
+  position: relative;
+  color: var(--tui-success-fill);
+}
+
+.error {
+  position: relative;
+
+  &__container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: var(--tui-error-fill);
+  }
+}

@@ -1,0 +1,60 @@
+<ng-container *ngIf="!!title; else input">
+  <label [tuiLabel]="label">
+    <ng-container *ngTemplateOutlet="input"></ng-container>
+  </label>
+</ng-container>
+
+<ng-template #input>
+  <tui-input
+    *ngIf="type === 'text'"
+    [nativeId]="uuid"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCleaner]="cleaner"
+    [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
+    [tuiTextfieldLabelOutside]="!!title"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+  >
+    {{ placeholder }}
+  </tui-input>
+
+  <tui-input-password
+    *ngIf="type === 'password'"
+    [nativeId]="uuid"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCleaner]="cleaner"
+    [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
+    [tuiTextfieldLabelOutside]="!!title"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+  >
+    {{ placeholder }}
+  </tui-input-password>
+</ng-template>
+
+<ng-template #success>
+  <tui-svg
+    src="tuiIconCheckLarge"
+    class="success tui-space_left-3"
+  ></tui-svg>
+</ng-template>
+
+<ng-template #label>
+  <div class="tui-space_bottom-2">
+    {{ title }}
+    <tui-tooltip
+      *ngIf="!!tooltip"
+      [describeId]="uuid"
+      [content]="tooltip"
+      direction="top-right"
+    ></tui-tooltip>
+  </div>
+</ng-template>

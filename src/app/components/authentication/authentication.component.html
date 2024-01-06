@@ -1,0 +1,108 @@
+<div class="flex flex-col justify-center items-center w-full">
+  <ng-container [ngSwitch]="authState$ | async">
+    <ng-container *ngSwitchCase="authState.Login">
+      <ng-container *ngTemplateOutlet="header; context: { $implicit: 'AUTH.LOGIN' }"></ng-container>
+      <ng-container *ngTemplateOutlet="inputs; context: { $implicit: false }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="buttons; context: { $implicit: { processTitle: 'AUTH.LOGIN', resetPassword: false } }"
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="links; context: { $implicit: { changeStateTitle: 'AUTH.NO_ACCOUNT', resetPassword: false } }"
+      ></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="authState.SignUp">
+      <ng-container *ngTemplateOutlet="header; context: { $implicit: 'AUTH.SIGN_UP' }"></ng-container>
+      <ng-container *ngTemplateOutlet="inputs; context: { $implicit: false }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="buttons; context: { $implicit: { processTitle: 'AUTH.SIGN_UP', resetPassword: false } }"
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="links; context: { $implicit: { changeStateTitle: 'AUTH.ALREADY_HAVE_AN_ACCOUNT', resetPassword: false } }"
+      ></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="authState.ForgotPassword">
+      <ng-container *ngTemplateOutlet="header; context: { $implicit: 'AUTH.FORGOT_PASSWORD_TITLE' }"></ng-container>
+      <ng-container *ngTemplateOutlet="inputs; context: { $implicit: true }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="buttons; context: { $implicit: { processTitle: 'AUTH.FORGOT_PASSWORD_ACTION', resetPassword: true } }"
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="links; context: { $implicit: { changeStateTitle: 'AUTH.BACK_TO_AUTHENTICATION', resetPassword: true } }"
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template
+  #header
+  let-title
+>
+  <h1 class="text-3xl pt-16 pb-8">
+    {{ title | translate }}
+  </h1>
+</ng-template>
+
+<ng-template
+  #inputs
+  let-onlyEmail
+>
+  <app-text-input
+    class="w-80 mb-4"
+    [title]="'INPUTS.EMAIL' | translate"
+    [control]="getControl(controlNames.EMAIL)"
+  ></app-text-input>
+  <app-text-input
+    *ngIf="!onlyEmail"
+    class="w-80"
+    [title]="'INPUTS.PASSWORD' | translate"
+    [control]="getControl(controlNames.PASSWORD)"
+    [type]="'password'"
+    [cleaner]="false"
+  ></app-text-input>
+</ng-template>
+
+<ng-template
+  #buttons
+  let-options
+>
+  <div class="flex w-80 mt-8">
+    <button
+      class="flex-1"
+      tuiButton
+      [size]="'m'"
+      [disabled]="!options?.resetPassword ? (actionButtonDisabled$ | async) : !getControl(controlNames.EMAIL)?.valid"
+      (click)="!options?.resetPassword ? processAuth() : forgotPassword()"
+    >
+      {{ options?.processTitle | translate }}
+    </button>
+    <button
+      *ngIf="!options?.resetPassword"
+      class="flex-1 ml-4"
+      tuiButton
+      [size]="'m'"
+      [appearance]="'outline'"
+      (click)="processGoogleAuth()"
+    >
+      {{ 'AUTH.GOOGLE_AUTH' | translate }}
+    </button>
+  </div>
+</ng-template>
+
+<ng-template
+  #links
+  let-options
+>
+  <div class="auth-footer w-80 mt-2">
+    <a (click)="toggleAuthState()">
+      {{ options?.changeStateTitle | translate }}
+    </a>
+    <a
+      *ngIf="!options?.resetPassword"
+      (click)="authState$.next(authState.ForgotPassword)"
+    >
+      {{ 'AUTH.FORGOT_PASSWORD' | translate }}
+    </a>
+  </div>
+</ng-template>
