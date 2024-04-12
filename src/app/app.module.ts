@@ -10,7 +10,6 @@ import { NotifierModule } from 'angular-notifier';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -31,7 +30,6 @@ const notifier = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
     NotFoundComponent,
     HomeComponent,
     AboutComponent,

@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UiKitModule } from '../ui-kit/ui-kit.module';
-import { CardComponent } from './components/common/card/card.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { LocaleSelectButtonComponent } from './components/common/locale-select-button/locale-select-button.component';
@@ -26,7 +25,6 @@ const components = [
   FooterComponent,
   NotificationBadgeComponent,
   MenuButtonComponent,
-  CardComponent,
   LocaleSelectButtonComponent,
   MapPreviewComponent,
 ];

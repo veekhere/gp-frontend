@@ -3,7 +3,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Observable, combineLatest, map } from 'rxjs';
 
 export enum NotificationStreamNode {
-  UserSettings = 'userSettings',
   Dashboard = 'dashboard',
 }
 
@@ -14,7 +13,6 @@ export enum NotificationStreamNode {
 export class NotificationManagerService {
 
   readonly notificationStreams = new Map<NotificationStreamNode, BehaviorSubject<boolean>>([
-    [NotificationStreamNode.UserSettings, new BehaviorSubject(false)],
     [NotificationStreamNode.Dashboard, new BehaviorSubject(false)],
   ]);
 
