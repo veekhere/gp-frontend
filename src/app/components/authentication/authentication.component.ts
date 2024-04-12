@@ -2,7 +2,6 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthState, emailPattern } from '@app-constants';
-import { AuthService } from '@app/services/auth.service';
 import { FormUtils } from '@core/utils/form-utils';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';

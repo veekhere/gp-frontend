@@ -4,7 +4,6 @@ import { AppPathConstants } from '@app-constants';
 import { AboutComponent } from './components/about/about.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthorizedGuard } from '@core/guards/authorized.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
@@ -23,7 +22,6 @@ const routes: Routes = [
   {
     path: AppPathConstants.DASHBOARD,
     component: HomeComponent,
-    canActivate: [AuthorizedGuard]
   },
   {
     path: AppPathConstants.ABOUT,

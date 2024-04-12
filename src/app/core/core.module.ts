@@ -13,8 +13,6 @@ import { LocaleSelectButtonComponent } from './components/common/locale-select-b
 import { MapPreviewComponent } from './components/common/map-preview/map-preview.component';
 import { MenuButtonComponent } from './components/common/menu-button/menu-button.component';
 import { NotificationBadgeComponent } from './components/common/notification-badge/notification-badge.component';
-import { UserButtonComponent } from './components/common/user-button/user-button.component';
-import { UserSettingsModalComponent } from './components/common/user-settings-modal/user-settings-modal.component';
 import { BadgeBorderColorDirective } from './components/directives/badge-border-color.directive';
 import { CaptureParentClassDirective } from './components/directives/capture-parent-class.directive';
 import { ButtonSelectComponent } from './components/inputs/button-select/button-select.component';
@@ -26,8 +24,6 @@ import { RatingComponent } from './components/inputs/rating/rating.component';
 const components = [
   HeaderComponent,
   FooterComponent,
-  UserButtonComponent,
-  UserSettingsModalComponent,
   NotificationBadgeComponent,
   MenuButtonComponent,
   CardComponent,
