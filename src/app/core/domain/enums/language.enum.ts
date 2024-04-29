@@ -19,16 +19,16 @@ export class Language extends BaseEnum {
   name: string;
   flagName: string;
 
-  constructor(userActionEnum: LanguageEnum) {
+  constructor(languageEnum: LanguageEnum) {
     super();
 
-    if (!userActionEnum) {
+    if (!languageEnum) {
       return;
     }
 
-    this.id = userActionEnum;
-    this.name = Language.LanguageDictionary.get(userActionEnum).name;
-    this.flagName = Language.LanguageDictionary.get(userActionEnum).flagName;
+    this.id = languageEnum;
+    this.name = Language.LanguageDictionary.get(languageEnum).name;
+    this.flagName = Language.LanguageDictionary.get(languageEnum).flagName;
   }
 
   static override toClientObject(serverObject: any): Language {

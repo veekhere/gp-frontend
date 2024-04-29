@@ -46,11 +46,12 @@ export class DateUtils {
   /**
    * Transform time to 'ru-RU' (HH:mm:ss).
    */
-  public static formatToRussianTimeOnly(value: Date): string {
+  public static formatToRussianTimeOnly(value: Date, trimSeconds = false): string {
     if (!DateUtils.isDate(value)) {
       return null;
     }
-    return value.toLocaleTimeString('ru-RU');
+    const time = value.toLocaleTimeString('ru-RU');
+    return trimSeconds ? time.slice(0, -3) : time;
   }
 
   /**

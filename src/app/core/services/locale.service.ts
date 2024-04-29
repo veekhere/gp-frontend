@@ -47,8 +47,8 @@ export class LocaleService {
       });
   }
 
-  set language(value: string) {
-    const language = value?.toUpperCase();
+  setLanguage(value: string): void {
+    const language = value?.toLowerCase();
     this.translateService.use(language);
   }
 

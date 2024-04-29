@@ -1,0 +1,24 @@
+.settings {
+  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+
+  &__closed {
+    color: var(--text-default-inactive);
+
+    &:hover {
+      color: var(--text-default-hover);
+      transform: rotateZ(90deg);
+    }
+  }
+
+  &__open {
+    color: var(--text-default);
+    &:hover {
+      color: inherit;
+      transform: rotateZ(90deg);
+    }
+  }
+}

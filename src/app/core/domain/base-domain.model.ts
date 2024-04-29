@@ -21,7 +21,7 @@ export class BaseDomain {
   /**
    * Prepare entity for transfer.
    */
-  toServerObject(): string {
-    return JSON.stringify(this);
+  toServerObject(): any {
+    return null;
   }
 }

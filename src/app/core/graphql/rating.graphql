@@ -1,0 +1,27 @@
+fragment RatingData on Rating {
+  id
+  price
+  rentType
+  pros
+  cons
+  comment
+  placeRating
+  landlordRating
+  neighborRating
+  createdAt
+  place {
+    id
+  }
+}
+
+query SearchRatings {
+  search: searchRatings {
+    ...RatingData
+  }
+}
+
+mutation RatePlace($rating: RatingInput!) {
+  ratePlace(rating: $rating) {
+    status
+  }
+}

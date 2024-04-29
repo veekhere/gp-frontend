@@ -28,7 +28,7 @@ export class MenuButtonComponent implements OnInit {
 
   isNotified(): Observable<boolean> {
     return this.notificationManagerService.hasNotifiedChild([
-      this.notificationManagerService.notificationStreams.get(NotificationStreamNode.Dashboard),
+      // this.notificationManagerService.notificationStreams.get(NotificationStreamNode.Dashboard),
     ]);
   }
 

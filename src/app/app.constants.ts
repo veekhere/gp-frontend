@@ -1,11 +1,14 @@
 export type ClassConstructor = new (...args: any[]) => any;
 
+export const FETCH_POLICY_NETWORK_ONLY = 'network-only';
+export const FETCH_POLICY_NO_CACHE = 'no-cache';
+
 export class AppConstants {
   static readonly KEYS = {
     LOCAL_STORAGE_PREFIX: 'VEEKHERE-RENTRATE: ',
     COOKIE_PREFIX: 'VEEKHERE_RENTRATE_',
     LANGUAGE: 'LANGUAGE',
-    USER: 'USER',
+    THEME: 'THEME'
   } as const;
 
   static readonly LANGUAGES = {
@@ -23,8 +26,8 @@ export class AppPathConstants {
   static readonly EMPTY = '';
   static readonly WILDCARD = '**';
 
-  static readonly HOME = 'home';
-  static readonly DASHBOARD = 'dashboard';
+  static readonly FIND = 'find';
+  static readonly ADD = 'add';
   static readonly ABOUT = 'about';
 }
 

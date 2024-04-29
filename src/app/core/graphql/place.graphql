@@ -1,0 +1,69 @@
+query SearchPlaces($filter: PlaceFilter!) {
+  search: searchPlaces(filter: $filter) {
+    id
+    rentType
+    spaceType
+    area
+    floor
+    latitude
+    longitude
+    country
+    state
+    city
+    road
+    houseNumber
+    avgPrice
+    avgPlaceRating
+    avgLandlordRating
+    avgNeighborRating
+  }
+}
+
+query GetPlace($id: UUID!) {
+  get: getPlace(id: $id) {
+    id
+    rentType
+    spaceType
+    area
+    floor
+    shortTermPrices {
+      min
+      max
+    }
+    longTermPrices {
+      min
+      max
+    }
+    latitude
+    longitude
+    country
+    state
+    city
+    road
+    houseNumber
+    avgPlaceRating
+    avgLandlordRating
+    avgNeighborRating
+    ratings {
+      ...RatingData
+    }
+  }
+}
+
+mutation CreatePlace($place: PlaceInput!) {
+  create: createPlace(place: $place) {
+    status
+  }
+}
+
+mutation UpdatePlace($place: PlaceInput!) {
+  update: updatePlace(place: $place) {
+    status
+  }
+}
+
+mutation DeletePlace($id: UUID!) {
+  delete: deletePlace(id: $id) {
+    status
+  }
+}

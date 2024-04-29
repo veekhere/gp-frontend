@@ -5,7 +5,11 @@
 >
   <ng-template let-isOpen>
     <button class="language-button">
-      <span class="flag fi {{ 'fi-' + (language$ | async) }}"></span>
+      <tui-svg
+        src="tuiIconSettingsLarge"
+        class="settings"
+        [ngClass]="isOpen ? 'settings__open' : 'settings__closed'"
+      ></tui-svg>
     </button>
   </ng-template>
 </app-button-select>

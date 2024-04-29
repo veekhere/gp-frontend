@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppPathConstants } from '@app-constants';
-import { AboutComponent } from './components/about/about.component';
-import { HomeComponent } from './components/home/home.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
+import { AddPageComponent } from './components/add-page/add-page.component';
+import { FindPageComponent } from './components/find-page/find-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
 
 const routes: Routes = [
   {
     path: AppPathConstants.EMPTY,
-    component: HomeComponent,
+    component: StartPageComponent,
   },
   {
-    path: AppPathConstants.HOME,
-    component: HomeComponent,
+    path: AppPathConstants.FIND,
+    component: FindPageComponent,
   },
   {
-    path: AppPathConstants.DASHBOARD,
-    component: HomeComponent,
+    path: AppPathConstants.ADD,
+    component: AddPageComponent,
   },
   {
     path: AppPathConstants.ABOUT,
-    component: AboutComponent,
+    component: AboutPageComponent,
   },
   {
     path: AppPathConstants.WILDCARD,

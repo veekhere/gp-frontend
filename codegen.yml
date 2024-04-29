@@ -1,0 +1,28 @@
+overwrite: true
+schema:
+  - 'src/contracts/graphql/common/common.graphqls'
+  - 'src/contracts/graphql/common/enums.graphqls'
+  - 'src/contracts/graphql/common/projection.graphqls'
+  - 'src/contracts/graphql/common/scalars.graphqls'
+  - 'src/contracts/graphql/domain/place.graphqls'
+  - 'src/contracts/graphql/domain/rating.graphqls'
+  - 'src/contracts/graphql/domain/rent-price.graphqls'
+
+documents:
+  - 'src/app/core/graphql/rating.graphql'
+  - 'src/app/core/graphql/place.graphql'
+
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-apollo-angular'
+      - 'typescript-operations'
+    config: {
+      namedClient: 'rentrateClient',
+      addExplicitOverride: true
+    }
+
+config:
+  scalars:
+    UUID: string

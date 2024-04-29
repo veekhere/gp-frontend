@@ -3,7 +3,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Observable, combineLatest, map } from 'rxjs';
 
 export enum NotificationStreamNode {
-  Dashboard = 'dashboard',
 }
 
 @UntilDestroy()
@@ -13,7 +12,7 @@ export enum NotificationStreamNode {
 export class NotificationManagerService {
 
   readonly notificationStreams = new Map<NotificationStreamNode, BehaviorSubject<boolean>>([
-    [NotificationStreamNode.Dashboard, new BehaviorSubject(false)],
+    // [NotificationStreamNode.Dashboard, new BehaviorSubject(false)],
   ]);
 
   hasNotifiedChild(children: BehaviorSubject<boolean>[]): Observable<boolean> {

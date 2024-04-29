@@ -1,49 +1,53 @@
-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: fit-content;
-  width: 100%;
+:host {
+  height: 60px;
 
-  padding: 8px 20px;
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bg-default);
 
-  border-top: 1px solid var(--divider);
+    padding: 8px 20px;
 
-  .info {
-    position: relative;
-    user-select: none;
-    color: var(--text-service);
+    border-top: 1px solid var(--divider);
 
-    a {
+    .info {
+      position: relative;
       user-select: none;
-      transition: all 0.3s ease 0s;
-      -webkit-transition: all 0.3s ease 0s;
-      -moz-transition: all 0.3s ease 0s;
-      -ms-transition: all 0.3s ease 0s;
-      -o-transition: all 0.3s ease 0s;
+      color: var(--text-service);
 
-      &:hover {
-        color: var(--text-service-hover);
+      a {
+        user-select: none;
+        transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        -ms-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+
+        &:hover {
+          color: var(--text-service-hover);
+        }
       }
     }
-  }
 
-  .year {
-    position: relative;
-    user-select: none;
-    margin: 0 -10px 0 0;
-    color: var(--text-service);
+    .year {
+      position: relative;
+      user-select: none;
+      margin: 0 -10px 0 0;
+      color: var(--text-service);
 
-    &::before {
-      content: '©';
-      font-size: 14px;
-      position: absolute;
-      left: -12px;
-      top: 2px;
+      &::before {
+        content: '©';
+        font-size: 14px;
+        position: absolute;
+        left: -12px;
+        top: 2px;
+      }
     }
   }
 }

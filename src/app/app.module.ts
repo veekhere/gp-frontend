@@ -9,9 +9,12 @@ import { CoreModule } from '@core/core.module';
 import { NotifierModule } from 'angular-notifier';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './components/about/about.component';
-import { HomeComponent } from './components/home/home.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { GraphQLModule } from './graphql.module';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import { FindPageComponent } from './components/find-page/find-page.component';
+import { AddPageComponent } from './components/add-page/add-page.component';
 
 const notifier = [
   NotifierModule.withConfig({
@@ -31,14 +34,17 @@ const notifier = [
   declarations: [
     AppComponent,
     NotFoundComponent,
-    HomeComponent,
-    AboutComponent,
+    FindPageComponent,
+    AboutPageComponent,
+    StartPageComponent,
+    AddPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
+    GraphQLModule,
     ...notifier,
   ],
   providers: [

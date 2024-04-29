@@ -1,0 +1,10 @@
+<button (click)="click()">fetch</button>
+
+<div class="flex flex-col items-center justify-center">
+  <ng-container *ngFor="let rating of ratings$ | async">
+    <app-rating-card
+      [rating]="rating"
+      class="mb-4"
+    ></app-rating-card>
+  </ng-container>
+</div>

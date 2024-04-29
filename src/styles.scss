@@ -13,6 +13,7 @@
 :root {
   --text-default: #f0f0f0;
   --text-default-hover: #bdbdbd;
+  --text-secondary: #d7d7d7;
   --text-default-inactive: #777777;
   --text-service: #2d2d2d;
   --text-service-hover: #4b4b4b;
@@ -35,8 +36,8 @@
 
 html,
 body {
-  background-color: var(--bg-default);
-  color: var(--text-default);
+  background: var(--bg-default) !important;
+  color: var(--text-default) !important;
   font-family: 'Fira Sans', 'Nunito Sans', 'Noto Sans', 'Source Sans Pro', Helvetica !important;
 }
 

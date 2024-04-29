@@ -64,8 +64,8 @@
     }
   },
   "TEXT": {
-    "ABOUT": "Fintracker is a project created to track your cash flow. Record your expenses and analyze the provided statistics. Divide expenses into categories and filter the displayed list in a way that suits you.",
-    "ABOUT_WARNING": "Attention! The project was created for educational purposes only. Using the provided services, you confirm that Fintracker is not responsible for the safety of the data you entered, and you are aware of the possibility of leakage or damage to this data."
+    "ABOUT": "RentRate is an innovative online service that will help you easily find a suitable rental property in any city. With convenient search filters, you can select residential or commercial properties that meet your criteria, such as price, area, number of rooms, and more. Furthermore, with extended reviews from users, you can get a more comprehensive understanding of a potential rental property. You can also share your experience of renting residential or non-residential properties to help other users make more informed decisions. A unique feature of RentRate is the ability to add new properties to the database. If you have found the perfect property that is not in the app, simply add it and help other users find their dream rental. Find the perfect rental property with RentRate now and make the process of finding accommodation more convenient and effective!",
+    "ABOUT_WARNING": "Attention! The project was created for educational purposes only. Using the provided services, you confirm that RentRate is not responsible for the safety of the data you entered, and you are aware of the possibility of leakage or damage to this data."
   },
   "INPUTS": {
     "EMAIL": "E-mail",

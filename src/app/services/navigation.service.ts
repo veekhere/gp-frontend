@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppPathConstants } from '@app-constants';
 import { ButtonSelectGroup } from '@core/components/inputs/button-select/domain/button-select-group.model';
 import { ButtonSelectItem } from '@core/components/inputs/button-select/domain/button-select-item.model';
-import { NotificationManagerService, NotificationStreamNode } from '@core/services/notification-manager.service';
+import { NotificationManagerService } from '@core/services/notification-manager.service';
 import { Observable } from 'rxjs';
 
 type NavigationMenuItem = {
@@ -16,14 +16,12 @@ export class NavigationService {
 
   private readonly navigationMenu: NavigationMenuItem[] = [
     {
-      title: 'NAVIGATION.HOME',
-      link: AppPathConstants.HOME,
+      title: 'NAVIGATION.FIND',
+      link: AppPathConstants.FIND,
     },
     {
-      title: 'NAVIGATION.DASHBOARD',
-      link: AppPathConstants.DASHBOARD,
-      hasNotification$: this.notificationManagerService.notificationStreams
-        .get(NotificationStreamNode.Dashboard)?.asObservable(),
+      title: 'NAVIGATION.ADD',
+      link: AppPathConstants.ADD,
     },
     {
       title: 'NAVIGATION.ABOUT',

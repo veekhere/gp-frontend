@@ -1,0 +1,73 @@
+<div class="rating-card rating card">
+  <div class="card__header">
+    <div class="left-side">
+      <p class="rating__rent-type">{{ rating?.rentType?.name | translate }}</p>
+      <p class="rating__price">{{ rating?.price | appCurrency : 'RUB' : 0 : 0 }}</p>
+
+      <div class="flex">
+        <app-rating
+          class="mr-2"
+          [control]="getControl(CONTROL_NAMES.AVG_RATING)"
+          [readonly]="true"
+        ></app-rating>
+        <tui-svg
+          [tuiHint]="tooltip"
+          [tuiHintDirection]="'right-bottom'"
+          src="tuiIconHelpCircle"
+        ></tui-svg>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <p class="date">{{ rating?.createdAt | formatDate : 'only-date' }}</p>
+      <p class="time">{{ rating?.createdAt | formatDate : 'only-time' : true }}</p>
+    </div>
+  </div>
+
+  <div class="card__content content">
+    <div class="content__container mb-6">
+      <p class="content__title">{{ 'ENTITY.RATING.PROS' | translate }}</p>
+      <p class="rating__pros">{{ rating.pros }}</p>
+    </div>
+
+    <div class="content__container">
+      <p class="content__title">{{ 'ENTITY.RATING.CONS' | translate }}</p>
+      <p class="rating__cons">{{ rating.cons }}</p>
+    </div>
+
+    <ng-container *ngIf="!!rating.comment">
+      <div class="content__container mt-6">
+        <p class="content__title">{{ 'ENTITY.RATING.COMMENT' | translate }}</p>
+        <p class="rating__comment">{{ rating.comment }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #tooltip>
+  <div class="mb-2">
+    <p>{{ 'ENTITY.RATING.PLACE_RATING' | translate }}</p>
+    <app-rating
+      [control]="getControl(CONTROL_NAMES.PLACE_RATING)"
+      [readonly]="true"
+    ></app-rating>
+  </div>
+
+  <div class="mb-2">
+    <p>{{ 'ENTITY.RATING.LANDLORD_RATING' | translate }}</p>
+    <app-rating
+      [control]="getControl(CONTROL_NAMES.LANDLORD_RATING)"
+      [readonly]="true"
+    ></app-rating>
+  </div>
+
+  <ng-container *ngIf="!!getControl(CONTROL_NAMES.NEIGHBOR_RATING)?.value">
+    <div>
+      <p>{{ 'ENTITY.RATING.NEIGHBOR_RATING' | translate }}</p>
+      <app-rating
+        [control]="getControl(CONTROL_NAMES.NEIGHBOR_RATING)"
+        [readonly]="true"
+      ></app-rating>
+    </div>
+  </ng-container>
+</ng-template>

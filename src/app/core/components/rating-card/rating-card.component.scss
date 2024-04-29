@@ -1,0 +1,67 @@
+:host {
+  width: min(100vw, max(100%, 800px));
+  min-width: 300px;
+  max-width: 800px;
+
+  .rating-card {
+    border: 1px var(--divider) solid;
+    border-radius: 8px;
+
+    background-color: var(--bg-default);
+    box-shadow: var(--tui-shadow);
+
+    padding: 24px;
+
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+
+      padding: 0 0 16px 0;
+      border-bottom: 1px var(--divider) solid;
+
+      .left-side {
+        .rating {
+          &__rent-type {
+            font-size: 18px;
+            font-weight: 600;
+          }
+
+          &__price {
+            margin: 8px 0 12px 0;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .right-side {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+
+        p {
+          font-size: 14px;
+          color: var(--text-default-inactive);
+        }
+      }
+    }
+
+    .card__content {
+      padding: 16px 0 0 0;
+
+      .content__container {
+        .content__title {
+          font-weight: 600;
+          font-size: 14px;
+
+          margin: 0 0 8px 0;
+        }
+        .rating__pros,
+        .rating__cons,
+        .rating__comment {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+}
