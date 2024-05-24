@@ -1,0 +1,85 @@
+:host {
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    padding: 0 0 16px 0;
+    border-bottom: 1px var(--divider) solid;
+
+    .left-side {
+      .place {
+        &__space-type {
+          font-size: 18px;
+          font-weight: 600;
+          margin: 0 0 16px 0;
+        }
+
+        &__rent-type {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+
+      .prices {
+        display: flex;
+        flex-direction: column;
+        margin: 12px 0 0 0;
+
+        .container {
+          display: flex;
+          flex-direction: column;
+
+          .short-term,
+          .long-term {
+            display: flex;
+
+            .place__price {
+              margin: 8px 0 0 0;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+
+      p {
+        font-size: 14px;
+        color: var(--text-default-inactive);
+      }
+    }
+  }
+
+  .card__content {
+    padding: 16px 0 0 0;
+
+    .content-header {
+      display: flex;
+      justify-content: space-between;
+
+      .content__container {
+        margin: 0 0 16px 0;
+
+        .content__title {
+          font-weight: 600;
+          font-size: 14px;
+
+          margin: 0 0 8px 0;
+        }
+        .place__address {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+
+  .ratings {
+    height: 524px;
+    overflow-y: scroll;
+  }
+}

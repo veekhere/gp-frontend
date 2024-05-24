@@ -11,13 +11,14 @@ import {
   DeletePlaceGQL,
   GetPlaceGQL,
   GetPlaceQuery,
+  PlaceFilter,
   PlaceInput,
   SearchPlacesGQL,
   SearchPlacesQuery,
   UpdatePlaceGQL,
   UpdatePlaceMutation
 } from '@graphql';
-import { catchError, map, Observable, tap } from 'rxjs';
+import { catchError, delay, map, Observable, tap, timeout } from 'rxjs';
 import { ErrorHandlerService } from '../error-handler.service';
 import { NotificationService } from '../notification.service';
 
@@ -37,10 +38,11 @@ export class PlaceService extends BaseEntityService<Place> {
   }
 
   // ! setup filter
-  search(filter: any): Observable<PlaceProjection[]> {
+  search(filter: PlaceFilter): Observable<PlaceProjection[]> {
     return this.searchPlacesGQL
-      .fetch({ filter }, { fetchPolicy: FETCH_POLICY_NO_CACHE })
+      .fetch({ filter: filter ?? {} }, { fetchPolicy: FETCH_POLICY_NO_CACHE })
       .pipe(
+        // delay(5000),
         catchError((err) => this.errorHandler.handleErrorAndNull(err, 'Ошибка при получении списка помещений')),
         map((response: ApolloQueryResult<SearchPlacesQuery>) =>
           response?.data?.search?.map((place) => PlaceProjection.toClientObject(place))),
@@ -63,7 +65,7 @@ export class PlaceService extends BaseEntityService<Place> {
         catchError((err) => this.errorHandler.handleErrorAndNull(err, 'Ошибка при создании помещения')),
         map((response: ApolloQueryResult<CreatePlaceMutation>) => OperationStatus.toClientObject(response.data.create?.status)),
         tap((status) => {
-          if (status?.id === OperationStatusEnum.Ok) {
+          if (status?.id === OperationStatusEnum.Success) {
             this.notificationService.success('Помещение создано');
           }
         })
@@ -77,7 +79,7 @@ export class PlaceService extends BaseEntityService<Place> {
         catchError((err) => this.errorHandler.handleErrorAndNull(err, 'Ошибка при обновлении помещения')),
         map((response: ApolloQueryResult<UpdatePlaceMutation>) => OperationStatus.toClientObject(response.data.update?.status)),
         tap((status) => {
-          if (status?.id === OperationStatusEnum.Ok) {
+          if (status?.id === OperationStatusEnum.Success) {
             this.notificationService.success('Помещение обновлено');
           }
         })
@@ -91,7 +93,7 @@ export class PlaceService extends BaseEntityService<Place> {
         catchError((err) => this.errorHandler.handleErrorAndNull(err, 'Ошибка при удалении помещения')),
         map((response: ApolloQueryResult<UpdatePlaceMutation>) => OperationStatus.toClientObject(response.data.update?.status)),
         tap((status) => {
-          if (status?.id === OperationStatusEnum.Ok) {
+          if (status?.id === OperationStatusEnum.Success) {
             this.notificationService.success('Помещение удалено');
           }
         })

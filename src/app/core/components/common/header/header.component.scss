@@ -79,7 +79,7 @@ header {
   position: relative;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   header {
     flex-direction: row-reverse;
 
@@ -97,7 +97,7 @@ header {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .menu-button {
     display: none;
   }

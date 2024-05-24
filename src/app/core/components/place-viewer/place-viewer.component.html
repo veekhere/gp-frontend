@@ -1,0 +1,96 @@
+<div class="card__header">
+  <div class="left-side">
+    <p class="place__space-type">{{ place?.spaceType?.name }}</p>
+    <p class="place__rent-type">{{ place?.rentTypes }}</p>
+
+    <div class="prices">
+      <div class="container">
+        {{ 'ENUM.RENT_TYPE.SHORT_TERM' | translate }}
+        <div class="short-term">
+          <p class="place__price mb-3">{{ place?.shortTermPrices?.min | appCurrency : 'RUB' : 0 : 0 }}</p>
+          <p class="place__price mb-3">—{{ place?.shortTermPrices?.max | appCurrency : 'RUB' : 0 : 0 }}</p>
+        </div>
+      </div>
+
+      <div class="container">
+        {{ 'ENUM.RENT_TYPE.LONG_TERM' | translate }}
+        <div class="long-term">
+          <p class="place__price mb-3">{{ place?.longTermPrices?.min | appCurrency : 'RUB' : 0 : 0 }}</p>
+          <p class="place__price">—{{ place?.longTermPrices?.max | appCurrency : 'RUB' : 0 : 0 }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex mt-3">
+      <app-rating
+        class="mr-2"
+        [value]="place?.rating"
+        [readonly]="true"
+      ></app-rating>
+      <tui-svg
+        [tuiHint]="tooltip"
+        [tuiHintDirection]="'right-bottom'"
+        src="tuiIconHelpCircle"
+      ></tui-svg>
+    </div>
+  </div>
+
+  <div class="right-side">
+    <p class="area">{{ place?.area }} м²</p>
+    <p class="floor">{{ place?.floor }} этаж</p>
+  </div>
+</div>
+
+<div class="card__content content">
+  <div class="content-header">
+    <div class="content__container">
+      <p class="content__title">{{ 'ENTITY.PLACE.ADDRESS' | translate }}</p>
+      <p class="place__address">{{ place?.address }}</p>
+    </div>
+
+    <button
+      size="m"
+      tuiButton
+      type="button"
+    >
+      {{ 'ACTION.RATE' | translate }}
+    </button>
+  </div>
+
+  <div class="ratings">
+    <div
+      class="mb-4"
+      *ngFor="let rating of place?.ratings"
+    >
+      <app-rating-card [rating]="rating"></app-rating-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #tooltip>
+  <div class="mb-2">
+    <p>{{ 'ENTITY.PLACE.PLACE_RATING' | translate }}</p>
+    <app-rating
+      [value]="place?.avgPlaceRating"
+      [readonly]="true"
+    ></app-rating>
+  </div>
+
+  <div class="mb-2">
+    <p>{{ 'ENTITY.PLACE.LANDLORD_RATING' | translate }}</p>
+    <app-rating
+      [value]="place?.avgLandlordRating"
+      [readonly]="true"
+    ></app-rating>
+  </div>
+
+  <ng-container *ngIf="!!place?.avgNeighborRating">
+    <div>
+      <p>{{ 'ENTITY.PLACE.NEIGHBOR_RATING' | translate }}</p>
+      <app-rating
+        [value]="place?.avgNeighborRating"
+        [readonly]="true"
+      ></app-rating>
+    </div>
+  </ng-container>
+</ng-template>

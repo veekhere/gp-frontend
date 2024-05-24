@@ -1,0 +1,99 @@
+<ng-container *ngIf="!!title; else input">
+  <label [tuiLabel]="label">
+    <ng-container *ngTemplateOutlet="input"></ng-container>
+  </label>
+</ng-container>
+
+<ng-template #input>
+  <tui-select
+    *ngIf="!multi; else multiSelect"
+    [stringify]="stringify"
+    [tuiTextfieldLabelOutside]="true"
+    [nativeId]="uuid"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCleaner]="cleaner"
+    [tuiTextfieldCustomContent]="control?.valid && validate && !isEmpty() ? success : ''"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+  >
+    {{ placeholder }}
+    <tui-data-list-wrapper
+      *tuiDataList
+      [itemContent]="optionTemplate"
+      [items]="options | tuiFilterByInputWith : stringify"
+    ></tui-data-list-wrapper>
+  </tui-select>
+
+  <ng-container *ngFor="let message of inputErrorMessages()">
+    <div
+      *ngIf="control?.touched && control?.invalid"
+      class="error__container tui-space_top-2"
+    >
+      <tui-svg
+        src="tuiIconInfo"
+        class="error tui-space_right-1"
+      ></tui-svg>
+      {{ message | translate }}
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #success>
+  <tui-svg
+    src="tuiIconCheckLarge"
+    class="success tui-space_left-3"
+  ></tui-svg>
+</ng-template>
+
+<ng-template #label>
+  <div class="tui-space_bottom-2">
+    {{ title }}
+    <tui-tooltip
+      *ngIf="!!tooltip"
+      [describeId]="uuid"
+      [content]="tooltip"
+      direction="top-right"
+    ></tui-tooltip>
+  </div>
+</ng-template>
+
+<ng-template
+  #optionTemplate
+  let-option
+>
+  <span tuiCell>
+    <span tuiTitle>
+      {{ option?.name }}
+    </span>
+  </span>
+</ng-template>
+
+<ng-template #multiSelect>
+  <tui-multi-select
+    [stringify]="stringify"
+    [tuiTextfieldLabelOutside]="true"
+    [editable]="false"
+    [nativeId]="uuid"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCleaner]="cleaner"
+    [tuiTextfieldCustomContent]="control?.valid && validate && !isEmpty() ? success : ''"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+  >
+    {{ placeholder }}
+    <tui-data-list-wrapper
+      *tuiDataList
+      tuiMultiSelectGroup
+      [itemContent]="optionTemplate"
+      [items]="options | tuiFilterByInputWith : stringify"
+    ></tui-data-list-wrapper>
+  </tui-multi-select>
+</ng-template>

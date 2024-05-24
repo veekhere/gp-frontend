@@ -3,21 +3,16 @@ import { PlaceInput } from '@graphql';
 import { BaseDomain } from './base-domain.model';
 import { RentType } from './enums/rent-type.enum';
 import { SpaceType } from './enums/space-type.enum';
+import { Location } from './location.model';
 import { Rating } from './rating.model';
 import { RentPrice } from './rent-price.model';
 
 export class PlaceControlNames {
-  static readonly RENT_TYPE: keyof Place = 'rentType';
-  static readonly SPACE_TYPE: keyof Place = 'spaceType';
   static readonly AREA: keyof Place = 'area';
   static readonly FLOOR: keyof Place = 'floor';
-  static readonly LATITUDE: keyof Place = 'latitude';
-  static readonly LONGITUDE: keyof Place = 'longitude';
-  static readonly COUNTRY: keyof Place = 'country';
-  static readonly STATE: keyof Place = 'state';
-  static readonly CITY: keyof Place = 'city';
-  static readonly ROAD: keyof Place = 'road';
-  static readonly HOUSE_NUMBER: keyof Place = 'houseNumber';
+  static readonly RENT_TYPE: keyof Place = 'rentType';
+  static readonly SPACE_TYPE: keyof Place = 'spaceType';
+  static readonly LOCATION: keyof Place = 'location';
 }
 
 export class Place extends BaseDomain {
@@ -72,7 +67,7 @@ export class Place extends BaseDomain {
   /**
    * Дом.
    */
-  houseNumber: number = null;
+  houseNumber: string = null;
   /**
    * Средняя оценка помещения.
    */
@@ -89,6 +84,29 @@ export class Place extends BaseDomain {
    * Оценки.
    */
   ratings: Rating[] = null;
+  /**
+   * Локация. UI.
+   */
+  location: Location = null;
+
+  get address(): string {
+    return `${this.country}, ${this.state ? this.state + ',' : ''} ${this.city}, ${this.road} ${this.houseNumber}`;
+  }
+
+  get rentTypes(): string {
+    return this.rentType?.map((o) => o?.name)?.join(', ');
+  }
+
+  get rating(): number {
+    const values = [this.avgPlaceRating, this.avgLandlordRating];
+    if (!!this.avgNeighborRating) {
+      values.push(this.avgNeighborRating);
+    }
+
+    const avg = values.reduce((prev, curr) => prev + curr, 0) / values.length;
+
+    return Number(avg.toPrecision(2));
+  }
 
   constructor(entity: Partial<Place> = null) {
     super();
@@ -101,6 +119,34 @@ export class Place extends BaseDomain {
     this.shortTermPrices = RentPrice.toClientObject(entity.shortTermPrices);
     this.longTermPrices = RentPrice.toClientObject(entity.longTermPrices);
     this.ratings = entity.ratings?.map((o) => Rating.toClientObject(o)) ?? [];
+    this.location = Location.toClientObject(entity.location);
+
+    this.syncLocations();
+  }
+
+  private syncLocations(): void {
+    if (this.location && !this.country) {
+      this.latitude = this.location.latitude;
+      this.longitude = this.location.longitude;
+      this.country = this.location.address?.country;
+      this.state = this.location.address?.state;
+      this.city = this.location.address?.city;
+      this.road = this.location.address?.road;
+      if (this.location.address?.houseNumber?.length) {
+        this.houseNumber = this.location.address?.houseNumber;
+      }
+    }
+    this.location = Location.toClientObject({
+      latitude: this.latitude,
+      longitude: this.longitude,
+      address: {
+        country: this.country,
+        state: this.state,
+        city: this.city,
+        road: this.road,
+        houseNumber: this.houseNumber,
+      }
+    });
   }
 
   static override toClientObject(entity: any): Place {

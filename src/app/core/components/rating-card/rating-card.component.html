@@ -1,7 +1,7 @@
 <div class="rating-card rating card">
   <div class="card__header">
     <div class="left-side">
-      <p class="rating__rent-type">{{ rating?.rentType?.name | translate }}</p>
+      <p class="rating__rent-type">{{ rating?.rentType?.name }}</p>
       <p class="rating__price">{{ rating?.price | appCurrency : 'RUB' : 0 : 0 }}</p>
 
       <div class="flex">
@@ -61,7 +61,7 @@
     ></app-rating>
   </div>
 
-  <ng-container *ngIf="!!getControl(CONTROL_NAMES.NEIGHBOR_RATING)?.value">
+  <ng-container *ngIf="!!rating?.neighborRating">
     <div>
       <p>{{ 'ENTITY.RATING.NEIGHBOR_RATING' | translate }}</p>
       <app-rating

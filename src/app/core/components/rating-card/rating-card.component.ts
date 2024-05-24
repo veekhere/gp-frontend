@@ -14,7 +14,6 @@ export class RatingCardComponent implements OnInit {
 
   @Input() rating: Rating;
 
-  readonly AVG = 'avg';
   readonly CONTROL_NAMES = RatingControlNames;
   private readonly form = new FormGroup({});
 

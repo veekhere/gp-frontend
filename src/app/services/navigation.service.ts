@@ -20,10 +20,6 @@ export class NavigationService {
       link: AppPathConstants.FIND,
     },
     {
-      title: 'NAVIGATION.ADD',
-      link: AppPathConstants.ADD,
-    },
-    {
       title: 'NAVIGATION.ABOUT',
       link: AppPathConstants.ABOUT,
     },

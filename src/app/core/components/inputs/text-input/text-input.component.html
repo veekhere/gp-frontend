@@ -10,8 +10,8 @@
     [nativeId]="uuid"
     [tuiHintContent]="!!title ? null : tooltip"
     [tuiTextfieldCleaner]="cleaner"
-    [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
-    [tuiTextfieldLabelOutside]="!!title"
+    [tuiTextfieldCustomContent]="control?.valid && validate && control?.value !== null ? success : '1234'"
+    [tuiTextfieldLabelOutside]="true"
     [formControl]="control"
     [disabled]="control?.disabled"
     [focusable]="focusable"
@@ -28,7 +28,7 @@
     [tuiHintContent]="!!title ? null : tooltip"
     [tuiTextfieldCleaner]="cleaner"
     [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
-    [tuiTextfieldLabelOutside]="!!title"
+    [tuiTextfieldLabelOutside]="true"
     [formControl]="control"
     [disabled]="control?.disabled"
     [focusable]="focusable"
@@ -38,6 +38,40 @@
   >
     {{ placeholder }}
   </tui-input-password>
+
+  <tui-input-number
+    *ngIf="type === 'number'"
+    [nativeId]="uuid"
+    [tuiHintContent]="!!title ? null : tooltip"
+    [tuiTextfieldCleaner]="cleaner"
+    [tuiTextfieldCustomContent]="control?.valid && validate && control?.value !== null ? success : ''"
+    [tuiTextfieldLabelOutside]="true"
+    [formControl]="control"
+    [disabled]="control?.disabled"
+    [focusable]="focusable"
+    [pseudoFocus]="pseudoFocus"
+    [readOnly]="readonly"
+    [tuiTextfieldSize]="size"
+    [tuiTextfieldPostfix]="postfix"
+    [precision]="precision"
+    [min]="minValue"
+    [max]="maxValue"
+  >
+    {{ placeholder }}
+  </tui-input-number>
+
+  <ng-container *ngFor="let message of inputErrorMessages()">
+    <div
+      *ngIf="control?.touched && control?.invalid"
+      class="error__container tui-space_top-2"
+    >
+      <tui-svg
+        src="tuiIconInfo"
+        class="error tui-space_right-1"
+      ></tui-svg>
+      {{ message | translate }}
+    </div>
+  </ng-container>
 </ng-template>
 
 <ng-template #success>
@@ -54,7 +88,7 @@
       *ngIf="!!tooltip"
       [describeId]="uuid"
       [content]="tooltip"
-      direction="top-right"
+      direction="right"
     ></tui-tooltip>
   </div>
 </ng-template>

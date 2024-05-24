@@ -34,7 +34,7 @@ export class Location extends BaseDomain {
 
   constructor(location: Partial<Location> = null) {
     super();
-    if (!location) {
+    if (!location || !location?.latitude) {
       return;
     }
     ObjectUtils.constructorFiller(this, location);
@@ -42,7 +42,7 @@ export class Location extends BaseDomain {
   }
 
   static override toClientObject(address: any): Location {
-    if (!address) {
+    if (!address || !address?.latitude) {
       return null;
     }
     return new Location(address);

@@ -1,41 +1,42 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CustomFormControl } from '@core/domain/custom-form.control';
-import { tuiInputPasswordOptionsProvider } from '@taiga-ui/kit';
+import { SelectOption } from '@core/domain/interfaces/select-options';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.scss'],
+  selector: 'app-select-input',
+  templateUrl: './select-input.component.html',
+  styleUrls: ['./select-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    tuiInputPasswordOptionsProvider({
-      icons: {
-        hide: null,
-        show: null,
-      },
-    }),
-  ],
 })
-export class TextInputComponent {
+export class SelectInputComponent {
 
   @Input() control: CustomFormControl;
   @Input() title: string;
   @Input() placeholder: string = '';
   @Input() tooltip: string = null;
+  @Input() options: SelectOption[] = null;
   @Input() cleaner = true;
   @Input() focusable = true;
   @Input() readonly = false;
   @Input() pseudoFocus: boolean = null;
   @Input() validate = true;
+  @Input() multi = false;
   @Input() size: 's' | 'm' | 'l' = 'm';
-  @Input() type: 'text' | 'password' | 'number' = 'text';
-  @Input() postfix: string = '';
-  @Input() precision: number = 2;
-  @Input() minValue = -Infinity;
-  @Input() maxValue = Infinity;
 
   readonly uuid = uuidv4();
+
+  constructor() {}
+
+  isEmpty(): boolean {
+    return this.multi
+      ? !this.control?.value?.length
+      : this.control?.value === null;
+  }
+
+  stringify(option: any): string {
+    return option?.name;
+  }
 
   inputErrorMessages(): string[] {
     const messages: string[] = [];

@@ -1,8 +1,9 @@
 import { BaseEnum } from './base.enum';
+import { OperationStatus as GeneratedOperationStatus } from '@graphql';
 
 export enum OperationStatusEnum {
-  Ok = 'OK',
-  Error = 'FAILED',
+  Success = GeneratedOperationStatus.Success,
+  Failed = GeneratedOperationStatus.Failed,
 }
 
 interface OperationStatusData {
@@ -15,8 +16,8 @@ interface OperationStatusData {
 export class OperationStatus extends BaseEnum {
 
   static OperationStatusDictionary = new Map<OperationStatusEnum, OperationStatusData>([
-    [OperationStatusEnum.Ok, { name: '200' }],
-    [OperationStatusEnum.Error, { name: '0' }],
+    [OperationStatusEnum.Success, { name: 'Success' }],
+    [OperationStatusEnum.Failed, { name: 'Failed' }],
   ]);
 
   /**

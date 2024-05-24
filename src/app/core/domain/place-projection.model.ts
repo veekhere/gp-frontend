@@ -3,6 +3,13 @@ import { BaseDomain } from './base-domain.model';
 import { RentType } from './enums/rent-type.enum';
 import { SpaceType } from './enums/space-type.enum';
 
+export class PlaceProjectionControlNames {
+  static readonly AVG_PLACE_RATING: keyof PlaceProjection = 'avgPlaceRating';
+  static readonly AVG_LANDLORD_RATING: keyof PlaceProjection = 'avgLandlordRating';
+  static readonly AVG_NEIGHBOR_RATING: keyof PlaceProjection = 'avgNeighborRating';
+  static readonly AVG_RATING: keyof PlaceProjection = 'avgRating';
+}
+
 export class PlaceProjection extends BaseDomain {
   /**
    * Тип аренды.
@@ -64,6 +71,18 @@ export class PlaceProjection extends BaseDomain {
    * Средняя оценка соседей.
    */
   avgNeighborRating: number = null;
+  /**
+   * UI. Средний общий рейтинг.
+   */
+  avgRating: string = null;
+
+  get address(): string {
+    return `${this.country}, ${this.state ? this.state + ',' : ''} ${this.city}, ${this.road} ${this.houseNumber}`;
+  }
+
+  get rentTypes(): string {
+    return this.rentType?.map((o) => o?.name)?.join(', ');
+  }
 
   constructor(entity: Partial<PlaceProjection> = null) {
     super();
@@ -71,6 +90,7 @@ export class PlaceProjection extends BaseDomain {
       return;
     }
     ObjectUtils.constructorFiller(this, entity);
+    this.avgRating = this.getAvgRating();
     this.rentType = entity.rentType?.map((o) => RentType.toClientObject(o?.id ?? o)) ?? [];
     this.spaceType = SpaceType.toClientObject(entity.spaceType?.id ?? entity?.spaceType);
   }
@@ -80,5 +100,16 @@ export class PlaceProjection extends BaseDomain {
       return null;
     }
     return new PlaceProjection(entity);
+  }
+
+  private getAvgRating(): string {
+    const values = [this.avgPlaceRating, this.avgLandlordRating];
+    if (!!this.avgNeighborRating) {
+      values.push(this.avgNeighborRating);
+    }
+
+    const avg = values.reduce((prev, curr) => prev + curr, 0) / values.length;
+
+    return avg.toPrecision(2);
   }
 }

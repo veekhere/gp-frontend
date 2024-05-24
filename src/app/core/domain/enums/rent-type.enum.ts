@@ -11,8 +11,14 @@ export enum RentTypeEnum {
  */
 export class RentType extends BaseEnum {
   public static RentTypeDictionary = new Map<RentTypeEnum, BaseEnumData>([
-    [RentTypeEnum.ShortTerm, { name: 'ENUM.RENT_TYPE.SHORT_TERM' }],
-    [RentTypeEnum.LongTerm, { name: 'ENUM.RENT_TYPE.LONG_TERM' }],
+    [RentTypeEnum.ShortTerm, {
+      name: 'Краткосрочная/посуточная',
+      altName: 'Short term',
+    }],
+    [RentTypeEnum.LongTerm, {
+      name: 'Долгосрочная/бессрочная',
+      altName: 'Long term',
+    }],
   ]);
 
   /**

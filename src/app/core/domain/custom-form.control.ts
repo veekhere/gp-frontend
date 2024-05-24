@@ -27,6 +27,9 @@ export class CustomFormControl extends FormControl {
     if (index) {
       this.index = index;
     }
+    setTimeout(() => {
+      this.setErrors(null);
+    }, 0);
   }
 
   isRequired(): boolean {

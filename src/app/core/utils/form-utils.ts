@@ -1,4 +1,5 @@
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { CustomFormControl } from '@core/domain/custom-form.control';
 
 /**
  * Common form utils.
@@ -7,7 +8,7 @@ export class FormUtils {
   /**
    * Add control in form.
    */
-  static addControls(formGroup: FormGroup, controls: { [p: string]: FormControl | FormGroup | FormArray }): void {
+  static addControls(formGroup: FormGroup, controls: { [p: string]: FormControl | FormGroup | FormArray; }): void {
     Object.entries(controls).forEach(([key, value]) => {
       formGroup.addControl(key, value);
     });
@@ -16,8 +17,8 @@ export class FormUtils {
   /**
    * Get control form formGroup.
    */
-  static getControl(formGroup: FormGroup, controlName: string): FormControl {
-    const formControl = formGroup?.controls[controlName] as FormControl;
+  static getControl(formGroup: FormGroup, controlName: string): CustomFormControl {
+    const formControl = formGroup?.controls[controlName] as CustomFormControl;
     return formControl ? formControl : null;
   }
 
@@ -40,7 +41,7 @@ export class FormUtils {
   /**
    * Get control from formGroup with full-list search.
    */
-  static getDeepControl(formGroup: FormGroup, controlName: string): FormControl {
+  static getDeepControl(formGroup: FormGroup, controlName: string): CustomFormControl {
     let result = FormUtils.getControl(formGroup, controlName);
     if (result) {
       return result;

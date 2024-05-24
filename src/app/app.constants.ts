@@ -27,7 +27,6 @@ export class AppPathConstants {
   static readonly WILDCARD = '**';
 
   static readonly FIND = 'find';
-  static readonly ADD = 'add';
   static readonly ABOUT = 'about';
 }
 

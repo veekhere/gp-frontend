@@ -1,0 +1,72 @@
+<h2 class="heading mb-8">{{ 'TEXT.ADD_TITLE' | translate }}</h2>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-text-input
+    class="flex-auto basis-1/2"
+    [type]="'number'"
+    [minValue]="1"
+    [postfix]="'м²'"
+    [title]="'CONTROL.AREA' | translate"
+    [control]="getControl(controlNames.AREA)"
+    [tooltip]="'CONTROL.TOOLTIPS.AREA' | translate"
+  ></app-text-input>
+
+  <app-text-input
+    class="flex-auto basis-1/2"
+    [type]="'number'"
+    [precision]="0"
+    [postfix]="'CONTROL.FLOOR' | translate"
+    [title]="'CONTROL.FLOOR' | translate"
+    [control]="getControl(controlNames.FLOOR)"
+    [tooltip]="'CONTROL.TOOLTIPS.FLOOR' | translate"
+  ></app-text-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-select-input
+    class="flex-auto basis-full"
+    [title]="'CONTROL.SPACE_TYPE' | translate"
+    [options]="spaceTypes$ | async"
+    [control]="getControl(controlNames.SPACE_TYPE)"
+  ></app-select-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-select-input
+    class="flex-auto basis-full"
+    [title]="'CONTROL.RENT_TYPE' | translate"
+    [options]="rentTypes$ | async"
+    [control]="getControl(controlNames.RENT_TYPE)"
+    [multi]="true"
+  ></app-select-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-16">
+  <app-location-autocomplete
+    class="flex-auto basis-full inline-block"
+    [title]="'CONTROL.LOCATION' | translate"
+    [control]="getControl(controlNames.LOCATION)"
+    [placeholder]="'CONTROL.PLACEHOLDERS.AUTOCOMPLETE' | translate"
+  ></app-location-autocomplete>
+</div>
+
+<div class="gap-4 grid">
+  <button
+    tuiButton
+    size="m"
+    type="button"
+    [disabled]="!isValid"
+    (click)="submit()"
+  >
+    {{ 'TEXT.SUBMIT' | translate }}
+  </button>
+  <button
+    tuiButton
+    size="m"
+    type="button"
+    [appearance]="'outline'"
+    (click)="cancel()"
+  >
+    {{ 'TEXT.CANCEL' | translate }}
+  </button>
+</div>

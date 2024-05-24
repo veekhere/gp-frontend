@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { CustomFormControl } from '@core/domain/custom-form.control';
 import { Location } from '@core/domain/location.model';
 import { LocationService } from '@core/services/location.service';
 import { validators } from '@core/services/validation.service';
@@ -16,8 +16,8 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class LocationAutocompleteComponent implements OnInit {
 
-  @Input() control: FormControl;
-  @Input() title: string;
+  @Input() control: CustomFormControl;
+  @Input() title: string = null;
   @Input() placeholder: string = '';
   @Input() tooltip: string = null;
   @Input() cleaner = true;
@@ -49,6 +49,13 @@ export class LocationAutocompleteComponent implements OnInit {
         untilDestroyed(this)
       )
       .subscribe((locations) => this.items$.next(locations));
+  }
+
+  inputErrorMessage(): string {
+    const message: string = this.control?.errors?.['houseIsNotSelected']?.message;
+    return message
+      ? message
+      : !!this.control?.isRequired() ? 'CONTROL.VALIDATION.REQUIRED' : null;
   }
 
   stringify(item?: Location): string {

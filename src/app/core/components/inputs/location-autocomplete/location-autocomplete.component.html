@@ -10,13 +10,13 @@
     [formControl]="control"
     [disabled]="control?.disabled"
     [tuiHintContent]="!!title ? null : tooltip"
-    [tuiTextfieldCustomContent]="control?.valid && validate ? success : ''"
+    [tuiTextfieldCustomContent]="control?.valid && validate && control?.value !== null ? success : ''"
     [tuiTextfieldCleaner]="cleaner"
     [focusable]="focusable"
     [pseudoFocus]="pseudoFocus"
     [readOnly]="readonly"
     [tuiTextfieldSize]="size"
-    [tuiTextfieldLabelOutside]="!!title"
+    [tuiTextfieldLabelOutside]="true"
     (searchChange)="searchString$.next($event)"
   >
     <input
@@ -29,11 +29,11 @@
       *tuiDataList
       [itemContent]="stringify | tuiStringifyContent"
       [items]="items$ | async"
+      [emptyContent]="'CONTROL.EMPTY' | translate"
     >
     </tui-data-list-wrapper>
   </tui-combo-box>
 
-  <!-- TODO to input error component -->
   <div
     *ngIf="control?.touched && control?.invalid"
     class="error__container tui-space_top-2"
@@ -42,7 +42,7 @@
       src="tuiIconInfo"
       class="error tui-space_right-1"
     ></tui-svg>
-    {{ control?.errors?.['houseIsNotSelected']?.message }}
+    {{ inputErrorMessage() | translate }}
   </div>
 </ng-template>
 

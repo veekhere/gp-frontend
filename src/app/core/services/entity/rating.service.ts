@@ -38,7 +38,7 @@ export class RatingService extends BaseEntityService<Rating> {
         catchError((err) => this.errorHandler.handleErrorAndNull(err, 'Ошибка при оценке помещения')),
         map((response: ApolloQueryResult<RatePlaceMutation>) => OperationStatus.toClientObject(response.data.ratePlace?.status)),
         tap((status) => {
-          if (status?.id === OperationStatusEnum.Ok) {
+          if (status?.id === OperationStatusEnum.Success) {
             this.notificationService.success('Отзыв сохранен');
           }
         })

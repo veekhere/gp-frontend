@@ -12,16 +12,21 @@
 
 :root {
   --text-default: #f0f0f0;
+  --text-default-dark: #0f0f0f;
   --text-default-hover: #bdbdbd;
   --text-secondary: #d7d7d7;
   --text-default-inactive: #777777;
   --text-service: #2d2d2d;
   --text-service-hover: #4b4b4b;
   --bg-default: #131313;
+  --bg-secondary: #222222;
   --divider: #242424;
+  --hover-overlay: #ffffff08;
   --royal-red: #f94141;
   --royal-orange: #f98341;
   --royal-yellow: #eac84f;
+  --royal-yellow-hover: #f0d163;
+  --royal-yellow-active: #d9b532;
   --royal-speed-green: #d4f941;
   --royal-green: #5bf941;
   --royal-deep-green: #37ae24;
@@ -32,6 +37,14 @@
   --royal-purple: #8741f9;
   --royal-pink: #df41f9;
   --royal-speed-pink: #f9418e;
+
+  --shadow: 0px 16px 32px -30px #0000004d;
+
+  // overwrite
+
+  --tui-primary: var(--royal-yellow);
+  --tui-primary-hover: var(--royal-yellow-hover);
+  --tui-primary-active: var(--royal-yellow-active);
 }
 
 html,
@@ -42,5 +55,26 @@ body {
 }
 
 tui-dropdown {
+  background: var(--bg-secondary) !important;
   border: none !important;
+}
+
+.error {
+  position: relative;
+
+  &__container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: var(--tui-error-fill);
+  }
+}
+
+.success {
+  position: relative;
+  color: var(--tui-success-fill);
+}
+
+button[data-appearance='primary'] > .t-wrapper > .t-content {
+  color: var(--text-default-dark);
 }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { exhaustiveCheck } from '@core/utils/check-utils';
+import { CommonUtils } from '@core/utils/common-utils';
 import { DateUtils } from '@core/utils/date-utils';
 
 @Pipe({ name: 'formatDate' })
@@ -22,7 +22,7 @@ export class FormatDatePipe implements PipeTransform {
         return date ? DateUtils.formatToRussianTimeOnly(date, trimSeconds) : null;
 
       default:
-        exhaustiveCheck(format, 'FormatDatePipe');
+        CommonUtils.exhaustiveCheck(format, 'FormatDatePipe');
     }
   }
 }

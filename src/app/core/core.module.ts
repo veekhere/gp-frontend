@@ -22,6 +22,10 @@ import { RatingComponent } from './components/inputs/rating/rating.component';
 import { RatingCardComponent } from './components/rating-card/rating-card.component';
 import { FormatDatePipe } from './pipes/format-date.pipe';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { SelectInputComponent } from './components/inputs/select-input/select-input.component';
+import { AddPlaceModalComponent } from './components/modals/add-place-modal/add-place-modal.component';
+import { PlaceCardComponent } from './components/place-card/place-card.component';
+import { PlaceViewerComponent } from './components/place-viewer/place-viewer.component';
 
 const components = [
   HeaderComponent,
@@ -31,6 +35,8 @@ const components = [
   SettingsButtonComponent,
   MapPreviewComponent,
   RatingCardComponent,
+  PlaceCardComponent,
+  PlaceViewerComponent,
 ];
 
 const directives = [
@@ -43,12 +49,17 @@ const inputs = [
   ButtonSelectComponent,
   LocationAutocompleteComponent,
   RatingComponent,
+  SelectInputComponent,
 ];
 
 const pipes = [
   FilterPipe,
   FormatDatePipe,
   CurrencyPipe,
+];
+
+const modals = [
+  AddPlaceModalComponent,
 ];
 
 function HttpLoaderFactory(http: HttpClient) {
@@ -60,6 +71,7 @@ function HttpLoaderFactory(http: HttpClient) {
     ...components,
     ...directives,
     ...inputs,
+    ...modals,
     ...pipes,
   ],
   imports: [
@@ -86,6 +98,7 @@ function HttpLoaderFactory(http: HttpClient) {
     ...components,
     ...directives,
     ...inputs,
+    ...modals,
     ...pipes,
   ]
 })

@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CoreModule } from '@core/core.module';
 import { TUI_SANITIZER } from "@taiga-ui/core";
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
-
-import { ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { CoreModule } from '@core/core.module';
 import { NotifierModule } from 'angular-notifier';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { GraphQLModule } from './graphql.module';
-import { StartPageComponent } from './components/start-page/start-page.component';
 import { FindPageComponent } from './components/find-page/find-page.component';
-import { AddPageComponent } from './components/add-page/add-page.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import { GraphQLModule } from './graphql.module';
 
 const notifier = [
   NotifierModule.withConfig({
@@ -37,7 +34,6 @@ const notifier = [
     FindPageComponent,
     AboutPageComponent,
     StartPageComponent,
-    AddPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +43,7 @@ const notifier = [
     GraphQLModule,
     ...notifier,
   ],
-  providers: [
-    ScreenTrackingService, UserTrackingService, { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

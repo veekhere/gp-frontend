@@ -1,5 +1,6 @@
 export interface BaseEnumData {
   name: string;
+  altName?: string;
 }
 
 /**
