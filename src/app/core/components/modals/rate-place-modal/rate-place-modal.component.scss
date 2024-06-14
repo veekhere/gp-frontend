@@ -1,0 +1,10 @@
+:host {
+  .heading {
+    font: var(--tui-font-heading-4);
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--text-default);
+  }
+}

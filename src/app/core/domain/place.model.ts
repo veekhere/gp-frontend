@@ -1,5 +1,8 @@
+import { EnumOptionsService } from '@app/services/enum-options.service';
 import { ObjectUtils } from '@core/utils/object-utils';
 import { PlaceInput } from '@graphql';
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { filter, map, Observable } from 'rxjs';
 import { BaseDomain } from './base-domain.model';
 import { RentType } from './enums/rent-type.enum';
 import { SpaceType } from './enums/space-type.enum';
@@ -15,6 +18,7 @@ export class PlaceControlNames {
   static readonly LOCATION: keyof Place = 'location';
 }
 
+@UntilDestroy()
 export class Place extends BaseDomain {
   /**
    * Тип аренды.
@@ -93,8 +97,30 @@ export class Place extends BaseDomain {
     return `${this.country}, ${this.state ? this.state + ',' : ''} ${this.city}, ${this.road} ${this.houseNumber}`;
   }
 
-  get rentTypes(): string {
-    return this.rentType?.map((o) => o?.name)?.join(', ');
+  get spaceType$(): Observable<string> {
+    return EnumOptionsService.spaceTypeOptions(this)
+      .pipe(
+        map((options) =>
+          options
+            ?.filter((option) => option?.id === this.spaceType?.id)
+            ?.map((option) => option?.name)
+            ?.join(', ')
+        )
+      );
+  }
+
+  get rentTypes$(): Observable<string> {
+    return EnumOptionsService.rentTypeOptions(this)
+      ?.pipe(
+        map((options) =>
+          options
+            ?.filter((option) =>
+              !!this.rentType?.find((value) => value?.id === option?.id)
+            )
+            ?.map((option) => option?.name)
+            ?.join(', ')
+        )
+      );
   }
 
   get rating(): number {

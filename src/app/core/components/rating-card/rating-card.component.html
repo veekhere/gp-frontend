@@ -1,7 +1,7 @@
 <div class="rating-card rating card">
   <div class="card__header">
     <div class="left-side">
-      <p class="rating__rent-type">{{ rating?.rentType?.name }}</p>
+      <p class="rating__rent-type">{{ rating?.rentType$ | async }}</p>
       <p class="rating__price">{{ rating?.price | appCurrency : 'RUB' : 0 : 0 }}</p>
 
       <div class="flex">

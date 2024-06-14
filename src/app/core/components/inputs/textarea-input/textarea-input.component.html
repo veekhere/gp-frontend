@@ -1,0 +1,50 @@
+<ng-container *ngIf="!!title; else input">
+  <label [tuiLabel]="label">
+    <ng-container *ngTemplateOutlet="input"></ng-container>
+  </label>
+</ng-container>
+
+<ng-template #input>
+  <tui-text-area
+    [formControl]="control"
+    [maxlength]="maxLength"
+    [readOnly]="readonly"
+    [disabled]="control?.disabled"
+    [tuiTextfieldCustomContent]="control?.valid && validate && control?.value !== null ? success : ''"
+    [tuiTextfieldLabelOutside]="true"
+  >
+    {{ placeholder }}
+  </tui-text-area>
+
+  <ng-container *ngFor="let message of inputErrorMessages()">
+    <div
+      *ngIf="control?.touched && control?.invalid"
+      class="error__container tui-space_top-2"
+    >
+      <tui-svg
+        src="tuiIconInfo"
+        class="error tui-space_right-1"
+      ></tui-svg>
+      {{ message | translate }}
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #success>
+  <tui-svg
+    src="tuiIconCheckLarge"
+    class="success tui-space_left-3"
+  ></tui-svg>
+</ng-template>
+
+<ng-template #label>
+  <div class="tui-space_bottom-2">
+    {{ title }}
+    <tui-tooltip
+      *ngIf="!!tooltip"
+      [describeId]="uuid"
+      [content]="tooltip"
+      direction="right"
+    ></tui-tooltip>
+  </div>
+</ng-template>

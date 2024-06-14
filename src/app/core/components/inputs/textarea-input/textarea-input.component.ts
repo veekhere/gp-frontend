@@ -1,41 +1,28 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { CustomFormControl } from '@core/domain/custom-form.control';
-import { SelectOption } from '@core/domain/interfaces/select-options';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-select-input',
-  templateUrl: './select-input.component.html',
-  styleUrls: ['./select-input.component.scss'],
+  selector: 'app-textarea-input',
+  templateUrl: './textarea-input.component.html',
+  styleUrls: ['./textarea-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectInputComponent {
+export class TextareaInputComponent implements OnInit {
 
   @Input() control: CustomFormControl;
   @Input() title: string;
   @Input() placeholder: string = '';
   @Input() tooltip: string = null;
-  @Input() options: SelectOption[] = null;
-  @Input() cleaner = true;
-  @Input() focusable = true;
   @Input() readonly = false;
-  @Input() pseudoFocus: boolean = null;
   @Input() validate = true;
-  @Input() multi = false;
-  @Input() size: 's' | 'm' | 'l' = 'm';
+  @Input() maxLength: number = null;
 
   readonly uuid = uuidv4();
 
-  constructor() {}
-
-  isEmpty(): boolean {
-    return this.multi
-      ? !this.control?.value?.length
-      : this.control?.value === null;
-  }
-
-  stringify(option: any): string {
-    return option?.name;
+  ngOnInit(): void {
+    this.control?.addValidator(Validators.maxLength(this.maxLength));
   }
 
   inputErrorMessages(): string[] {
@@ -47,7 +34,11 @@ export class SelectInputComponent {
 
     for (const [key, error] of Object.entries(this.control?.errors ?? {})) {
       if (!!key && !!error && key !== 'required') {
-        messages.push(error?.message);
+        if (key !== 'required' && key !== 'maxlength') {
+          messages.push(error?.message);
+        } else if (key === 'maxlength') {
+          messages.push(`CONTROL.VALIDATION.MAX_LENGTH`);
+        }
       }
     }
 

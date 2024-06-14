@@ -20,9 +20,9 @@ import { BehaviorSubject, first, Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddPlaceModalComponent implements OnInit, AfterViewInit {
+
   private readonly form = new FormGroup({});
   readonly controlNames = PlaceControlNames;
-
 
   private readonly entity$ = new BehaviorSubject<Place>(null);
   readonly spaceTypes$: Observable<SelectOption[]>;
@@ -32,11 +32,10 @@ export class AddPlaceModalComponent implements OnInit, AfterViewInit {
     @Inject(POLYMORPHEUS_CONTEXT)
     private readonly context: TuiDialogContext<boolean, any>,
     private readonly entityService: PlaceService,
-    readonly enumOptionsService: EnumOptionsService,
   ) {
     this.entity$?.next(new Place());
-    this.spaceTypes$ = enumOptionsService.spaceTypeOptions(this);
-    this.rentTypes$ = enumOptionsService.rentTypeOptions(this);
+    this.spaceTypes$ = EnumOptionsService.spaceTypeOptions(this);
+    this.rentTypes$ = EnumOptionsService.rentTypeOptions(this);
   }
 
   get isValid(): boolean {

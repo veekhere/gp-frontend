@@ -1,74 +1,113 @@
 {
-  "APPLICATION_LANGUAGE": "Application language",
+  "APPLICATION": {
+    "LANGUAGE": "Application language",
+    "THEME": "Theme"
+  },
+
   "LANGUAGE": {
     "EN": "English",
     "RU": "Русский"
   },
-  "ENUM": {},
-  "NOTIFICATION": {
-    "NOT_AUTHORIZED": "This area is only available for signed users",
-    "EMAIL_IS_NOT_VERIFIED": "You should verify your e-mail before you can do this",
-    "EMAIL_VERIFICATION_SUCCESS": "Your e-mail is verified",
-    "PASSWORD_RESET_SEND": "Password reset email sent, please check your inbox"
-  },
-  "AUTH": {
-    "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
-    "BACK_TO_AUTHENTICATION": "Back to authentication",
-    "CONFIRM_EMAIL_TEXT": "We sent a confirmation letter on your e-mail",
-    "CONFIRM_EMAIL_TITLE": "Almost done. Just confirm your e-mail",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "FORGOT_PASSWORD_ACTION": "Reset password",
-    "FORGOT_PASSWORD_TITLE": "Forgot password",
-    "GOOGLE_AUTH": "Google",
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "NO_ACCOUNT": "Do not have an account?",
-    "SIGN_UP": "Sign Up",
-    "VERIFY_EMAIL_TEXT": "We send you an e-mail with verification link",
-    "VERIFY_EMAIL_TITLE": "Almost done. Just verify your email"
-  },
-  "USER": {
-    "EMAIL": "E-mail",
-    "NICKNAME": "Nickname",
-    "EMAIL_VERIFIED": "Verified",
-    "EMAIL_NOT_VERIFIED": "Not verified"
-  },
-  "ACTION": {
-    "RESET_PASSWORD": "Reset password",
-    "RESEND_EMAIL": "Resend email verification",
-    "RESEND_EMAIL_COOLDOWN_START": "Send again in ",
-    "RESEND_EMAIL_COOLDOWN_END": " second(s)",
-    "LANGUAGE": "Language",
-    "UPLOAD": "Upload",
-    "ADD": "Add",
-    "EDIT": "Edit",
-    "DELETE": "Delete",
-    "WILDCARD_BACK": "I want to be at home!"
-  },
-  "NAVIGATION": {
-    "NAVIGATION": "Navigation",
-    "HOME": "Home",
-    "DASHBOARD": "Dashboard",
-    "ABOUT": "About",
-    "WILDCARD": "I think this is not the Platform 9¾...",
-    "USER": {
-      "ACTIONS": {
-        "SETTINGS": "Settings",
-        "LOGOUT": "Logout",
-        "LOGIN": "Login",
-        "SIGN_UP": "Sign Up",
-        "GROUPS": {
-          "AUTHENTICATION": "Authentication"
-        }
-      }
+
+  "ENUM": {
+    "THEME": {
+      "DARK": "Dark",
+      "LIGHT": "Light"
+    },
+    "RENT_TYPE": {
+      "SHORT_TERM": "Short term",
+      "LONG_TERM": "Long term"
+    },
+    "SPACE_TYPE": {
+      "APARTMENTS": "Apartments",
+      "FLAT": "Flat",
+      "GARAGE": "Garage/parking slot",
+      "HOUSE": "House",
+      "OPEN_SPACE": "Open space",
+      "UTILITY": "Utility"
     }
   },
-  "TEXT": {
-    "ABOUT": "RentRate is an innovative online service that will help you easily find a suitable rental property in any city. With convenient search filters, you can select residential or commercial properties that meet your criteria, such as price, area, number of rooms, and more. Furthermore, with extended reviews from users, you can get a more comprehensive understanding of a potential rental property. You can also share your experience of renting residential or non-residential properties to help other users make more informed decisions. A unique feature of RentRate is the ability to add new properties to the database. If you have found the perfect property that is not in the app, simply add it and help other users find their dream rental. Find the perfect rental property with RentRate now and make the process of finding accommodation more convenient and effective!",
-    "ABOUT_WARNING": "Attention! The project was created for educational purposes only. Using the provided services, you confirm that RentRate is not responsible for the safety of the data you entered, and you are aware of the possibility of leakage or damage to this data."
+
+  "ENTITY": {
+    "RATING": {
+      "PLACE_RATING": "Place",
+      "LANDLORD_RATING": "Landlord",
+      "NEIGHBOR_RATING": "Neighborhood",
+      "PROS": "Pros",
+      "CONS": "Cons",
+      "COMMENT": "Comment"
+    },
+    "PLACE": {
+      "PLACE_RATING": "Place (average)",
+      "LANDLORD_RATING": "Landlord (average)",
+      "NEIGHBOR_RATING": "Neighborhood (average)",
+      "ADDRESS": "Address"
+    }
   },
-  "INPUTS": {
-    "EMAIL": "E-mail",
-    "PASSWORD": "Password"
+
+  "ACTION": {
+    "WILDCARD_BACK": "Back to home page",
+    "ADD_PLACE": "Add place",
+    "FILTER": "Apply filters",
+    "CLEAR_FILTER": "Clear filters",
+    "RATE": "Rate place"
+  },
+
+  "CONTROL": {
+    "TO": "to",
+    "AREA": "Area",
+    "PRICE_FROM": "Rent place from",
+    "AREA_FROM": "Area from",
+    "PLACE_RATING_FROM": "Place rating from",
+    "LANDLORD_RATING_FROM": "Landlord rating from",
+    "NEIGHBOR_RATING_FROM": "Neighborhood rating from",
+    "PLACE_RATING": "Place rating",
+    "LANDLORD_RATING": "Landlord rating",
+    "NEIGHBOR_RATING": "Neighborhood rating",
+    "STATE": "State",
+    "CITY": "City",
+    "ROAD": "Street",
+    "HOUSE_NUMBER": "House number",
+    "FLOOR": "Floor",
+    "SPACE_TYPE": "Space type",
+    "RENT_TYPE": "Rent type",
+    "LOCATION": "Place location (with house number)",
+    "EMPTY": "There is nothing yet",
+    "PRICE": "Price",
+    "PROS": "Pros",
+    "CONS": "Cons",
+    "COMMENT": "Comment",
+    "VALIDATION": {
+      "REQUIRED": "This field is required",
+      "ONLY_DIGITS": "Only digits are allowed",
+      "HOUSE_IS_NOT_SELECTED": "Selected location does not contain house number",
+      "MAX_LENGTH": "Text length is over limit"
+    },
+    "PLACEHOLDERS": {
+      "AUTOCOMPLETE": "Start typing",
+      "PLACE": "Select place from list"
+    },
+    "TOOLTIPS": {
+      "AREA": "If the place consists of several floors, then enter their total area",
+      "FLOOR": "The floor where is the entrance to the place located"
+    }
+  },
+
+  "NAVIGATION": {
+    "NAVIGATION": "Navigation",
+    "FIND": "Find",
+    "ABOUT": "About this application",
+    "WILDCARD": "It seems like you've been lost..."
+  },
+
+  "TEXT": {
+    "ADD_TITLE": "Add new place",
+    "RATE_TITLE": "Rate place",
+    "SUBMIT": "Confirm",
+    "CANCEL": "Cancel",
+    "ABOUT": "RentRate is an innovative online service that will help you easily find a suitable rental property in any city. With convenient search filters, you can select residential or commercial properties that meet your criteria, such as price, area, number of rooms, and more. Furthermore, with extended reviews from users, you can get a more comprehensive understanding of a potential rental property. You can also share your experience of renting residential or non-residential properties to help other users make more informed decisions. A unique feature of RentRate is the ability to add new properties to the database. If you have found the perfect property that is not in the app, simply add it and help other users find their dream rental. Find the perfect rental property with RentRate now and make the process of finding accommodation more convenient and effective!",
+    "ABOUT_WARNING": "Attention! The project was created for educational purposes only. Using the provided services, you confirm that RentRate is not responsible for the safety of the data you entered, and you are aware of the possibility of leakage or damage to this data.",
+    "FLOOR": "floor"
   }
 }
+

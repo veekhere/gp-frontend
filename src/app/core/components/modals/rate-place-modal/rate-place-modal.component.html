@@ -1,0 +1,82 @@
+<h2 class="heading mb-8">{{ 'TEXT.RATE_TITLE' | translate }}</h2>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-select-input
+    class="flex-auto basis-full"
+    [title]="'CONTROL.RENT_TYPE' | translate"
+    [options]="rentTypes$ | async"
+    [control]="getControl(controlNames.RENT_TYPE)"
+  ></app-select-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-text-input
+    [type]="'number'"
+    [precision]="0"
+    [postfix]="'₽'"
+    [title]="'CONTROL.PRICE' | translate"
+    [control]="getControl(controlNames.PRICE)"
+  ></app-text-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-textarea-input
+    [control]="getControl(controlNames.PROS)"
+    [title]="'CONTROL.PROS' | translate"
+    [maxLength]="4000"
+  ></app-textarea-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-textarea-input
+    [control]="getControl(controlNames.CONS)"
+    [title]="'CONTROL.CONS' | translate"
+    [maxLength]="4000"
+  ></app-textarea-input>
+</div>
+
+<div class="gap-4 grid grid-flow-col mb-4">
+  <app-textarea-input
+    [control]="getControl(controlNames.COMMENT)"
+    [title]="'CONTROL.COMMENT' | translate"
+    [maxLength]="4000"
+  ></app-textarea-input>
+</div>
+
+<div class="flex justify-between mb-16">
+  <div class="place-rating">
+    <p>{{ 'CONTROL.PLACE_RATING' | translate }}</p>
+    <app-rating [control]="getControl(controlNames.PLACE_RATING)"></app-rating>
+  </div>
+
+  <div class="landlord-rating">
+    <p>{{ 'CONTROL.LANDLORD_RATING' | translate }}</p>
+    <app-rating [control]="getControl(controlNames.LANDLORD_RATING)"></app-rating>
+  </div>
+
+  <div class="neighbor-rating">
+    <p>{{ 'CONTROL.NEIGHBOR_RATING' | translate }}</p>
+    <app-rating [control]="getControl(controlNames.NEIGHBOR_RATING)"></app-rating>
+  </div>
+</div>
+
+<div class="gap-4 grid">
+  <button
+    tuiButton
+    size="m"
+    type="button"
+    [disabled]="!isValid"
+    (click)="submit()"
+  >
+    {{ 'TEXT.SUBMIT' | translate }}
+  </button>
+  <button
+    tuiButton
+    size="m"
+    type="button"
+    [appearance]="'outline'"
+    (click)="cancel()"
+  >
+    {{ 'TEXT.CANCEL' | translate }}
+  </button>
+</div>

@@ -39,17 +39,17 @@ export class FindPageComponent implements OnInit, AfterViewInit {
   readonly spaceTypes$: Observable<SelectOption[]>;
   readonly rentTypes$: Observable<SelectOption[]>;
   readonly place$ = new BehaviorSubject<Place>(null);
+  readonly isFiltersOpen$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
     private readonly placeService: PlaceService,
-    enumOptionsService: EnumOptionsService,
   ) {
     this.isLoading$.next(true);
     this.search();
-    this.spaceTypes$ = enumOptionsService.spaceTypeOptions(this);
-    this.rentTypes$ = enumOptionsService.rentTypeOptions(this);
+    this.spaceTypes$ = EnumOptionsService.spaceTypeOptions(this);
+    this.rentTypes$ = EnumOptionsService.rentTypeOptions(this);
   }
 
   ngOnInit(): void {
@@ -94,6 +94,7 @@ export class FindPageComponent implements OnInit, AfterViewInit {
 
   search(): void {
     this.isLoading$.next(true);
+    this.isFiltersOpen$.next(false);
     const filter = this.filter$?.value?.toServerObject();
     this.placeService.search(filter)
       .pipe(first())
@@ -133,6 +134,10 @@ export class FindPageComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.search();
     });
+  }
+
+  toggleFilter(): void {
+    this.isFiltersOpen$.next(!this.isFiltersOpen$.value);
   }
 
   private spyOnFilterChanges(): void {

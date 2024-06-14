@@ -26,6 +26,8 @@ import { SelectInputComponent } from './components/inputs/select-input/select-in
 import { AddPlaceModalComponent } from './components/modals/add-place-modal/add-place-modal.component';
 import { PlaceCardComponent } from './components/place-card/place-card.component';
 import { PlaceViewerComponent } from './components/place-viewer/place-viewer.component';
+import { RatePlaceModalComponent } from './components/modals/rate-place-modal/rate-place-modal.component';
+import { TextareaInputComponent } from './components/inputs/textarea-input/textarea-input.component';
 
 const components = [
   HeaderComponent,
@@ -50,6 +52,7 @@ const inputs = [
   LocationAutocompleteComponent,
   RatingComponent,
   SelectInputComponent,
+  TextareaInputComponent,
 ];
 
 const pipes = [
@@ -60,6 +63,7 @@ const pipes = [
 
 const modals = [
   AddPlaceModalComponent,
+  RatePlaceModalComponent,
 ];
 
 function HttpLoaderFactory(http: HttpClient) {

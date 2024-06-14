@@ -15,147 +15,153 @@
 <ng-template #content>
   <div class="header">
     <div class="header__container">
-      <div class="gap-4 grid grid-flow-col mb-4 w-fit">
-        <app-text-input
-          class="w-32"
-          [type]="'number'"
-          [minValue]="1"
-          [postfix]="'м²'"
-          [title]="'CONTROL.AREA' | translate"
-          [control]="getControl(CONTROL_NAMES.AREA_FROM)"
-          [tooltip]="'CONTROL.TOOLTIPS.AREA' | translate"
-        ></app-text-input>
+      <div
+        class="filters mb-4"
+        *ngIf="isFiltersOpen$ | async"
+      >
+        <div class="gap-4 grid grid-flow-col mb-4 w-fit">
+          <app-text-input
+            class="w-32"
+            [type]="'number'"
+            [minValue]="1"
+            [postfix]="'м²'"
+            [title]="'CONTROL.AREA' | translate"
+            [control]="getControl(CONTROL_NAMES.AREA_FROM)"
+            [tooltip]="'CONTROL.TOOLTIPS.AREA' | translate"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-32"
-          [type]="'number'"
-          [minValue]="1"
-          [postfix]="'м²'"
-          [title]="'CONTROL.TO' | translate"
-          [control]="getControl(CONTROL_NAMES.AREA_TO)"
-          [tooltip]="'CONTROL.TOOLTIPS.AREA' | translate"
-        ></app-text-input>
+          <app-text-input
+            class="w-32"
+            [type]="'number'"
+            [minValue]="1"
+            [postfix]="'м²'"
+            [title]="'CONTROL.TO' | translate"
+            [control]="getControl(CONTROL_NAMES.AREA_TO)"
+            [tooltip]="'CONTROL.TOOLTIPS.AREA' | translate"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-32"
-          [type]="'number'"
-          [precision]="0"
-          [minValue]="1"
-          [postfix]="'CONTROL.FLOOR' | translate"
-          [title]="'CONTROL.FLOOR' | translate"
-          [control]="getControl(CONTROL_NAMES.FLOOR)"
-          [tooltip]="'CONTROL.TOOLTIPS.FLOOR' | translate"
-        ></app-text-input>
+          <app-text-input
+            class="w-32"
+            [type]="'number'"
+            [precision]="0"
+            [minValue]="1"
+            [postfix]="'CONTROL.FLOOR' | translate"
+            [title]="'CONTROL.FLOOR' | translate"
+            [control]="getControl(CONTROL_NAMES.FLOOR)"
+            [tooltip]="'CONTROL.TOOLTIPS.FLOOR' | translate"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.PLACE_RATING_FROM' | translate"
-          [control]="getControl(CONTROL_NAMES.PLACE_RATING_FROM)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.PLACE_RATING_FROM' | translate"
+            [control]="getControl(CONTROL_NAMES.PLACE_RATING_FROM)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.TO' | translate"
-          [control]="getControl(CONTROL_NAMES.PLACE_RATING_TO)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.TO' | translate"
+            [control]="getControl(CONTROL_NAMES.PLACE_RATING_TO)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [title]="'CONTROL.STATE' | translate"
-          [control]="getControl(CONTROL_NAMES.STATE)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [title]="'CONTROL.STATE' | translate"
+            [control]="getControl(CONTROL_NAMES.STATE)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [title]="'CONTROL.CITY' | translate"
-          [control]="getControl(CONTROL_NAMES.CITY)"
-        ></app-text-input>
-      </div>
+          <app-text-input
+            class="w-44"
+            [title]="'CONTROL.CITY' | translate"
+            [control]="getControl(CONTROL_NAMES.CITY)"
+          ></app-text-input>
+        </div>
 
-      <div class="gap-4 grid grid-flow-col mb-4 w-fit">
-        <app-select-input
-          class="w-[414px]"
-          [title]="'CONTROL.SPACE_TYPE' | translate"
-          [options]="spaceTypes$ | async"
-          [control]="getControl(CONTROL_NAMES.SPACE_TYPE)"
-        ></app-select-input>
+        <div class="gap-4 grid grid-flow-col mb-4 w-fit">
+          <app-select-input
+            class="w-[414px]"
+            [title]="'CONTROL.SPACE_TYPE' | translate"
+            [options]="spaceTypes$ | async"
+            [control]="getControl(CONTROL_NAMES.SPACE_TYPE)"
+          ></app-select-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.LANDLORD_RATING_FROM' | translate"
-          [control]="getControl(CONTROL_NAMES.LANDLORD_RATING_FROM)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.LANDLORD_RATING_FROM' | translate"
+            [control]="getControl(CONTROL_NAMES.LANDLORD_RATING_FROM)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.TO' | translate"
-          [control]="getControl(CONTROL_NAMES.LANDLORD_RATING_TO)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.TO' | translate"
+            [control]="getControl(CONTROL_NAMES.LANDLORD_RATING_TO)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [title]="'CONTROL.ROAD' | translate"
-          [control]="getControl(CONTROL_NAMES.ROAD)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [title]="'CONTROL.ROAD' | translate"
+            [control]="getControl(CONTROL_NAMES.ROAD)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [title]="'CONTROL.HOUSE_NUMBER' | translate"
-          [control]="getControl(CONTROL_NAMES.HOUSE_NUMBER)"
-        ></app-text-input>
-      </div>
+          <app-text-input
+            class="w-44"
+            [title]="'CONTROL.HOUSE_NUMBER' | translate"
+            [control]="getControl(CONTROL_NAMES.HOUSE_NUMBER)"
+          ></app-text-input>
+        </div>
 
-      <div class="gap-4 grid grid-flow-col w-fit">
-        <app-select-input
-          class="w-[414px]"
-          [title]="'CONTROL.RENT_TYPE' | translate"
-          [options]="rentTypes$ | async"
-          [control]="getControl(CONTROL_NAMES.RENT_TYPE)"
-        ></app-select-input>
+        <div class="gap-4 grid grid-flow-col w-fit">
+          <app-select-input
+            class="w-[414px]"
+            [title]="'CONTROL.RENT_TYPE' | translate"
+            [options]="rentTypes$ | async"
+            [control]="getControl(CONTROL_NAMES.RENT_TYPE)"
+          ></app-select-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.NEIGHBOR_RATING_FROM' | translate"
-          [control]="getControl(CONTROL_NAMES.NEIGHBOR_RATING_FROM)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.NEIGHBOR_RATING_FROM' | translate"
+            [control]="getControl(CONTROL_NAMES.NEIGHBOR_RATING_FROM)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [maxValue]="5"
-          [title]="'CONTROL.TO' | translate"
-          [control]="getControl(CONTROL_NAMES.NEIGHBOR_RATING_TO)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [maxValue]="5"
+            [title]="'CONTROL.TO' | translate"
+            [control]="getControl(CONTROL_NAMES.NEIGHBOR_RATING_TO)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [postfix]="'₽'"
-          [title]="'CONTROL.PRICE_FROM' | translate"
-          [control]="getControl(CONTROL_NAMES.PRICE_FROM)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [postfix]="'₽'"
+            [title]="'CONTROL.PRICE_FROM' | translate"
+            [control]="getControl(CONTROL_NAMES.PRICE_FROM)"
+          ></app-text-input>
 
-        <app-text-input
-          class="w-44"
-          [type]="'number'"
-          [postfix]="'₽'"
-          [title]="'CONTROL.TO' | translate"
-          [control]="getControl(CONTROL_NAMES.PRICE_TO)"
-        ></app-text-input>
+          <app-text-input
+            class="w-44"
+            [type]="'number'"
+            [postfix]="'₽'"
+            [title]="'CONTROL.TO' | translate"
+            [control]="getControl(CONTROL_NAMES.PRICE_TO)"
+          ></app-text-input>
+        </div>
       </div>
 
       <div class="buttons">
         <button
+          *ngIf="isFiltersOpen$ | async"
           class="mr-4"
           size="m"
           tuiButton
@@ -167,6 +173,7 @@
           {{ 'ACTION.CLEAR_FILTER' | translate }}
         </button>
         <button
+          *ngIf="isFiltersOpen$ | async"
           class="mr-4"
           size="m"
           tuiButton
@@ -177,6 +184,7 @@
           {{ 'ACTION.FILTER' | translate }}
         </button>
         <button
+          class="mr-4"
           size="m"
           tuiButton
           type="button"
@@ -185,6 +193,13 @@
         >
           {{ 'ACTION.ADD_PLACE' | translate }}
         </button>
+        <button
+          type="button"
+          tuiIconButton
+          [icon]="(isFiltersOpen$ | async) ? 'tuiIconChevronUp' : 'tuiIconChevronDown'"
+          size="m"
+          (click)="toggleFilter()"
+        ></button>
       </div>
     </div>
   </div>
@@ -201,7 +216,14 @@
     </div>
 
     <div class="place-viewer">
-      <app-place-viewer [place]="place$ | async"></app-place-viewer>
+      <app-place-viewer
+        *ngIf="place$ | async; else placeholder"
+        [place]="place$ | async"
+      ></app-place-viewer>
     </div>
   </div>
+</ng-template>
+
+<ng-template #placeholder>
+  <div class="placeholder">{{ 'CONTROL.PLACEHOLDERS.PLACE' | translate }}</div>
 </ng-template>

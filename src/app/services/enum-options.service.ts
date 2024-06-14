@@ -10,7 +10,7 @@ import { map, Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class EnumOptionsService {
 
-  rentTypeOptions(parentInstance: any): Observable<SelectOption[]> {
+  static rentTypeOptions(parentInstance: any): Observable<SelectOption[]> {
     return LocaleService.language$
       .pipe(
         map((language) => {
@@ -27,7 +27,7 @@ export class EnumOptionsService {
       );
   }
 
-  spaceTypeOptions(parentInstance: any): Observable<SelectOption[]> {
+  static spaceTypeOptions(parentInstance: any): Observable<SelectOption[]> {
     return LocaleService.language$
       .pipe(
         map((language) => {

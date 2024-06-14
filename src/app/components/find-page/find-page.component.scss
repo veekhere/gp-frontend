@@ -1,8 +1,11 @@
 :host {
+  display: inline-block;
+  height: 100%;
+
   .main {
     display: flex;
     width: 100vw;
-    height: calc(100% - 362px);
+    height: calc(100% - 110px);
 
     padding: 0 16px;
 
@@ -56,5 +59,13 @@
         justify-content: end;
       }
     }
+  }
+
+  .placeholder {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 36px;
   }
 }

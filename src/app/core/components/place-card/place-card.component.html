@@ -4,8 +4,8 @@
 >
   <div class="card__header">
     <div class="left-side">
-      <p class="place__space-type">{{ placeProjection?.spaceType?.name }}</p>
-      <p class="place__rent-type">{{ placeProjection?.rentTypes }}</p>
+      <p class="place__space-type">{{ placeProjection?.spaceType$ | async }}</p>
+      <p class="place__rent-type">{{ placeProjection?.rentTypes$ | async }}</p>
       <p class="place__price">{{ placeProjection?.avgPrice | appCurrency : 'RUB' : 0 : 0 }}</p>
 
       <div class="flex">
@@ -24,7 +24,7 @@
 
     <div class="right-side">
       <p class="area">{{ placeProjection?.area }} м²</p>
-      <p class="floor">{{ placeProjection?.floor }} этаж</p>
+      <p class="floor">{{ placeProjection?.floor }} {{ 'TEXT.FLOOR' | translate }}</p>
     </div>
   </div>
 

@@ -4,14 +4,24 @@ import { CommonProjection } from './common/projection.model';
 import { RentType } from './enums/rent-type.enum';
 import { RatingInput } from '@graphql';
 import { DateUtils } from '@core/utils/date-utils';
+import { map, Observable } from 'rxjs';
+import { EnumOptionsService } from '@app/services/enum-options.service';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 export class RatingControlNames {
+  static readonly PRICE: keyof Rating = 'price';
+  static readonly RENT_TYPE: keyof Rating = 'rentType';
+  static readonly PROS: keyof Rating = 'pros';
+  static readonly CONS: keyof Rating = 'cons';
+  static readonly COMMENT: keyof Rating = 'comment';
   static readonly PLACE_RATING: keyof Rating = 'placeRating';
   static readonly LANDLORD_RATING: keyof Rating = 'landlordRating';
   static readonly NEIGHBOR_RATING: keyof Rating = 'neighborRating';
+
   static readonly AVG_RATING: keyof Rating = 'avgRating';
 }
 
+@UntilDestroy()
 export class Rating extends BaseDomain {
   /**
    * Цена аренды.
@@ -57,6 +67,18 @@ export class Rating extends BaseDomain {
    * UI. Средний общий рейтинг.
    */
   avgRating: string = null;
+
+  get rentType$(): Observable<string> {
+    return EnumOptionsService.rentTypeOptions(this)
+      .pipe(
+        map((options) =>
+          options
+            ?.filter((option) => option?.id === this.rentType?.id)
+            ?.map((option) => option?.name)
+            ?.join(', ')
+        )
+      );
+  }
 
   constructor(entity: Partial<Rating> = null) {
     super();

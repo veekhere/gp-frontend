@@ -40,7 +40,7 @@ export class TextInputComponent {
   inputErrorMessages(): string[] {
     const messages: string[] = [];
 
-    if (!!this.control?.isRequired()) {
+    if (!!this.control?.isRequired() && !!Object.entries(this.control?.errors ?? {})?.find(([key, value]) => key === 'required' && value)) {
       messages.push('CONTROL.VALIDATION.REQUIRED');
     }
 
